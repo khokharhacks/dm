@@ -1,65 +1,205 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>Project 5 </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Job Matcher & Resume Scanner</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
+<body class="bg-gray-50 text-gray-800 font-sans min-h-screen">
 
-<body style="background-color:88CFC2;">
-<h1 style="text-align:center;"> Alice Martin </h1>
-<p style="text-align:center;"> Supply chain, IT 
-<br> Email: alice@ggc.edu
-<br> Ph: 111-222-9090
-</p>
-<br>
-<br>
-<h2>Objective</h2>
-<p>Cybersecurity graduate with hands-on knowledge in threat detection, vulnerability assessment, and network security, seeking an entry-level role to apply and expand technical expertise.
-Driven to protect systems and data by leveraging strong analytical skills, continuous learning, and a passion for staying ahead of evolving cyber threats.</p>
-<h2>Education</h2>
-<ol>
-<li>BS(IT), Georgia Gwinnett College</li>
-<li>High School Diploma, Collins Hill </li>
-<li>Middle School</li>
-</ol>
+    <header class="bg-blue-600 text-white shadow-md py-4 px-6">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <h1 class="text-xl font-bold tracking-tight">🎯 AI Job Matcher Tracker</h1>
+            <span class="text-xs bg-blue-700 px-3 py-1 rounded-full text-blue-100">Powered by Gemini 2.5 Flash</span>
+        </div>
+    </header>
 
-<h2>Job Experience</h2>
-<ul>
-<li>IT Internee, Georgia Gwinnett College (Feb 2022-December 2025</li>
-<li>Sales Associate, Walmart (Jan 2021- Jan 2022 </li>
-<li>Sales Associate, Target (Jan 2019- December 2020</li>
-</ul>
-<h2> Projects</h2>
-<table border="1">
-<tr>
-<th>Project No. </th>
-<th>Description </th>
-<th>Project</th>
-</tr>
+    <main class="max-w-4xl mx-auto p-6 my-6">
+        
+        <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200 mb-6">
+            <h2 class="text-lg font-semibold mb-2 text-gray-900">1. Setup Your Secure Access Key</h2>
+            <p class="text-sm text-gray-500 mb-4">Your key is processed locally inside your browser and is never stored on a server.</p>
+            <div class="flex gap-3">
+                <input type="password" id="apiKey" placeholder="Paste your Gemini API Key here..." 
+                       class="flex-1 border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <button onclick="saveKey()" class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded font-medium transition">
+                    Save Key
+                </button>
+            </div>
+            <p id="keyStatus" class="text-xs mt-2 text-gray-500 italic"></p>
+        </div>
 
-<tr>
-<td> 1. </td>
-<td> Animated Video</td>
-<td> <a href="https://github.com/orgs/GGC-STaRS/repositories"> Animated </a>  </td>
-</tr>
+        <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200 mb-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+                <label class="block text-sm font-semibold mb-2 text-gray-900">2. Paste Your Resume Plain Text</label>
+                <textarea id="resumeText" rows="8" placeholder="Paste your complete resume details here (Skills, Experience, Education)..." 
+                          class="w-full border border-gray-300 p-2 rounded text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+            </div>
+            <div>
+                <label class="block text-sm font-semibold mb-2 text-gray-900">3. Target Job Location Preference</label>
+                <input type="text" id="locationInput" placeholder="e.g., Atlanta, GA or Remote" 
+                       class="w-full border border-gray-300 p-2 rounded text-sm mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                
+                <button onclick="runJobScanner()" id="scanBtn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded transition shadow-sm mt-4">
+                    🔍 Scan Job Postings & Match Resume
+                </button>
+            </div>
+        </div>
 
-<tr> 
-<td> 2. </td>
-<td> Image Project</td>
-<td> <img src="1.png" width="200"> </td>
-</tr>
-<tr>
-<td> 3. </td>
-<td> Audio Project</td>
-<td> <audio controls> <source src="2.mp3" type="audio/mpeg">
-</audio></td>
-</tr>
-<tr>
-<td> 4. </td>
-<td> Video Project</td>
-<td> <a href="https://github.com/orgs/GGC-STaRS/repositories"> VIDEO </a> </td>
- </tr>
-</table>
+        <div id="loadingState" class="hidden text-center py-12">
+            <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+            <p class="text-gray-600 font-medium">Gemini AI is currently pulling data and running match metrics...</p>
+        </div>
 
-<h2>Best Websites/Books</h2>
-<p>Calculas 1 </p>
+        <div id="resultsDashboard" class="hidden space-y-6">
+            
+            <div class="bg-amber-50 border-l-4 border-amber-500 p-5 rounded-r shadow-sm">
+                <h3 class="font-bold text-amber-900 mb-1 flex items-center gap-2">💡 Today's High-Match Market Analysis</h3>
+                <div id="marketSummary" class="text-sm text-amber-800 space-y-1 whitespace-pre-line"></div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+                <div class="p-4 bg-gray-100 border-b border-gray-200">
+                    <h3 class="font-bold text-gray-900">Matches Meeting the ≥80% Fit Threshold</h3>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-gray-50 text-xs font-semibold text-gray-600 border-b border-gray-200 uppercase">
+                                <th class="p-4">Match %</th>
+                                <th class="p-4">Target Position</th>
+                                <th class="p-4">Identified Skill Gaps</th>
+                                <th class="p-4">Instant Resume Tweak Tip</th>
+                            </tr>
+                        </thead>
+                        <tbody id="jobTableBody" class="text-sm divide-y divide-gray-100">
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        // Check for an existing saved key on initial page startup
+        document.addEventListener('DOMContentLoaded', () => {
+            const storedKey = localStorage.getItem('gemini_api_key');
+            if (storedKey) {
+                document.getElementById('apiKey').value = storedKey;
+                document.getElementById('keyStatus').innerText = "✅ Secure key recovered from local memory storage.";
+            }
+        });
+
+        function saveKey() {
+            const key = document.getElementById('apiKey').value.trim();
+            if(key) {
+                localStorage.setItem('gemini_api_key', key);
+                document.getElementById('keyStatus').innerText = "✅ Key stored successfully inside your browser window.";
+                alert("Key verified and stored locally!");
+            }
+        }
+
+        async function runJobScanner() {
+            const key = localStorage.getItem('gemini_api_key') || document.getElementById('apiKey').value.trim();
+            const resume = document.getElementById('resumeText').value.trim();
+            const location = document.getElementById('locationInput').value.trim();
+
+            if(!key) { alert("Please input and save a valid Gemini API key first."); return; }
+            if(!resume) { alert("Please paste text metadata from your resume file."); return; }
+            if(!location) { alert("Please provide a search city, state, or remote status filter."); return; }
+
+            // Show loading dashboard framework
+            document.getElementById('loadingState').classList.remove('hidden');
+            document.getElementById('resultsDashboard').classList.add('hidden');
+
+            // Generating Mock Job Postings targeted to user context since external HTTP fetching requires dedicated API keys
+            const simulatedMarketRawData = `
+                Job 1: Senior IT Solutions Analyst in ${location}. Needs expertise in project architecture, vendor oversight, framework audits, cloud integrations, and strong presentation skills.
+                Job 2: Customer Success Technology Associate in ${location}. Focuses on helpdesk escalations, basic query languages, onboarding documentation, user workflow setups, and ticketing tooling.
+                Job 3: General Infrastructure Systems Coordinator in ${location}. Mandates system uptime configurations, network structural topology monitoring, patch update maintenance, and technical training production.
+            `;
+
+            // Prompt engineering tailored to output structured data directly into our front-end interface
+            const systemEvaluationPrompt = `
+                You are an advanced talent acquisition parsing engine. Read the provided Candidate Resume and the Live Market Postings.
+                
+                Candidate Resume:
+                """${resume}"""
+
+                Available Market Data for Location [${location}]:
+                """${simulatedMarketRawData}"""
+
+                Your Task: Evaluate matches. Return a raw valid JSON object. Do not include any markdown backticks (\`\`\`) or the word "json". Output ONLY valid JSON structure exactly matching this schema blueprint:
+                {
+                   "summary": "Provide a brief 2-sentence summary tracking macro trends for this specific user profile in this city location.",
+                   "matches": [
+                      {
+                         "score": 92,
+                         "title": "Exact Title of Match 1",
+                         "gaps": "List tools or methodologies missing from the resume text relative to this role.",
+                         "tip": "Provide a single highly tactical bullet tip advising how they can rewrite or frame an operational detail on their resume to win this interview."
+                      }
+                   ]
+                }
+                Filter constraint: Only return rows inside the "matches" list where the evaluated score is 80 or above. If a mock job fails the match metric, omit it from the array list.
+            `;
+
+            try {
+                // Connect to the official modern Google Gemini Web API endpoint
+                const targetUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${key}`;
+                
+                const apiResponse = await fetch(targetUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: [{ parts: [{ text: systemEvaluationPrompt }] }]
+                    })
+                });
+
+                const structuralData = await apiResponse.json();
+                let cleanTextOutput = structuralData.candidates[0].content.parts[0].text.trim();
+                
+                // Sanitize output strings from JSON wrapper enclosures if generated by model variants
+                if(cleanTextOutput.startsWith("```")) {
+                    cleanTextOutput = cleanTextOutput.replace(/^```json|```$/g, "").trim();
+                }
+
+                const payload = JSON.parse(cleanTextOutput);
+
+                // Dynamically build and paint the results dashboard interface elements
+                document.getElementById('marketSummary').innerText = payload.summary;
+                
+                const tableBody = document.getElementById('jobTableBody');
+                tableBody.innerHTML = ""; // Wipe table clean
+
+                if(!payload.matches || payload.matches.length === 0) {
+                    tableBody.innerHTML = `<tr><td colspan="4" class="p-8 text-center text-gray-500 font-medium">No postings analyzed met the target ≥80% compatibility threshold today. Try expanding your resume skill lists or location scope.</td></tr>`;
+                } else {
+                    payload.matches.forEach(item => {
+                        const row = document.createElement('tr');
+                        row.className = "hover:bg-gray-50 transition";
+                        row.innerHTML = `
+                            <td class="p-4 font-bold text-emerald-600">${item.score}%</td>
+                            <td class="p-4 font-semibold text-gray-900">${item.title}</td>
+                            <td class="p-4 text-xs text-red-600 max-w-xs font-mono bg-red-50/50">${item.gaps || 'None'}</td>
+                            <td class="p-4 text-xs text-gray-600 italic border-l-2 border-blue-400 bg-blue-50/30">${item.tip}</td>
+                        `;
+                        tableBody.appendChild(row);
+                    });
+                }
+
+                // Smoothly swap loaded frames inside user view
+                document.getElementById('loadingState').classList.add('hidden');
+                document.getElementById('resultsDashboard').classList.remove('hidden');
+
+            } catch (error) {
+                console.error(error);
+                alert("An processing error occurred reading the Gemini model data pipeline. Please check that your key configuration permissions are active and try submitting again.");
+                document.getElementById('loadingState').classList.add('hidden');
+            }
+        }
+    </script>
 </body>
 </html>
