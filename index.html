@@ -3,244 +3,181 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enterprise Certification Engine | EduSphere</title>
+    <title>EduSphere | Elite Knowledge & Certification Marketplace</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
-        body { font-family: 'Plus Jakarta Sans', -apple-system, sans-serif; letter-spacing: -0.01em; }
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+        body { font-family: 'Plus Jakarta Sans', -apple-system, sans-serif; letter-spacing: -0.015em; }
         .font-mono { font-family: 'JetBrains Mono', monospace; }
-        .premium-blur { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+        .premium-blur { backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
+        .gradient-text { background: linear-gradient(135deg, #121316 30%, #635BFF 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     </style>
 </head>
-<body class="min-h-screen bg-[#F8F9FA] text-[#121316] antialiased">
+<body class="min-h-screen bg-[#FAFAFC] text-[#121316] antialiased scroll-smooth">
 
-    <header class="border-b border-[#E9ECEF] bg-white/80 premium-blur sticky top-0 z-50 px-8 py-4 flex items-center justify-between">
+    <header class="border-b border-[#E9ECEF] bg-white/80 premium-blur sticky top-0 z-50 px-6 lg:px-12 py-4 flex items-center justify-between">
         <div class="flex items-center gap-4">
             <div class="w-9 h-9 bg-[#635BFF] rounded-xl flex items-center justify-center text-white font-bold text-base shadow-sm shadow-[#635BFF]/30">E</div>
             <div class="flex items-center gap-2">
                 <span class="text-base font-bold tracking-tight text-[#121316]">EduSphere</span>
-                <span class="bg-[#635BFF]/10 text-[#635BFF] text-[10px] font-mono font-bold px-2 py-0.5 rounded-md border border-[#635BFF]/20">MATRIX</span>
+                <span class="bg-[#121316]/5 text-[#121316] text-[10px] font-mono font-bold px-2 py-0.5 rounded-md border border-[#121316]/10">HQ</span>
             </div>
         </div>
         
-        <div class="bg-[#EEF0F2] p-1 rounded-xl flex items-center gap-1">
-            <button id="tab-btn-learn" onclick="switchGlobalTab('learn')" class="text-xs font-semibold px-4 py-2 rounded-lg transition-all bg-white text-[#121316] shadow-xs">
-                Learning Tracks
-            </button>
-            <button id="tab-btn-instructor" onclick="switchGlobalTab('instructor')" class="text-xs font-semibold px-4 py-2 rounded-lg transition-all text-[#495057] hover:text-[#121316]">
-                Become an Instructor
-            </button>
-            <button id="tab-btn-corporate" onclick="switchGlobalTab('corporate')" class="text-xs font-semibold px-4 py-2 rounded-lg transition-all text-[#495057] hover:text-[#121316]">
-                Corporate Solutions
-            </button>
-        </div>
+        <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-[#495057]">
+            <a href="#about" class="hover:text-[#121316] transition-colors">About</a>
+            <a href="#technical" class="hover:text-[#121316] transition-colors">Technical Tracks</a>
+            <a href="#leadership" class="hover:text-[#121316] transition-colors">Professional Development</a>
+            <a href="#contact" class="hover:text-[#121316] transition-colors">Contact</a>
+        </nav>
 
         <div class="flex items-center gap-4">
-            <span class="text-xs font-mono text-[#6C757D] hidden sm:inline-block">v1.0.4</span>
-            <button onclick="switchGlobalTab('instructor')" class="bg-[#121316] text-white text-xs font-semibold px-4 py-2.5 rounded-xl hover:bg-[#212529] transition-all transform active:scale-[0.98] shadow-sm">
-                Join Faculty
-            </button>
+            <a href="#contact" class="bg-[#121316] text-white text-xs font-semibold px-4 py-2.5 rounded-xl hover:bg-[#635BFF] transition-all transform active:scale-[0.98] shadow-sm">
+                Request Consultation
+            </a>
         </div>
     </header>
 
-    <div id="view-learn" class="global-view max-w-7xl mx-auto px-6 lg:px-8 py-10 grid grid-cols-1 lg:grid-cols-12 gap-8">
-        <aside class="lg:col-span-4 flex flex-col gap-4">
-            <div>
-                <span class="text-[11px] font-mono font-bold text-[#635BFF] tracking-widest uppercase">Ecosystem Tracks</span>
-                <h1 class="text-2xl font-bold tracking-tight text-[#121316] mt-0.5">Certifications</h1>
+    <section class="max-w-7xl mx-auto px-6 lg:px-8 pt-16 pb-20 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div class="lg:col-span-7 space-y-6">
+            <div class="inline-flex items-center gap-2 bg-[#635BFF]/10 border border-[#635BFF]/20 px-3 py-1 rounded-full text-[11px] font-mono font-semibold tracking-wider text-[#635BFF] uppercase">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#00D4B2] animate-pulse"></span> Expanding North American Access
             </div>
-            <div id="track-list-navigation" class="space-y-3 mt-2"></div>
-        </aside>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#121316] leading-[1.1]">
+                Learn Faster.<br>Connect with Experts.<br><span class="gradient-text">Build Your Future.</span>
+            </h1>
+            <p class="text-base sm:text-lg text-[#495057] leading-relaxed max-w-2xl">
+                One global ecosystem connecting students, schools, and corporate institutions with vetted educators, subject matter experts, and professional coaches. From high-tier technical architecture certifications to executive leadership metrics.
+            </p>
+            <div class="pt-4 flex flex-wrap gap-4">
+                <a href="#technical" class="bg-[#635BFF] hover:bg-[#5249F4] text-white text-sm font-semibold px-6 py-3.5 rounded-xl transition-all shadow-md shadow-[#635BFF]/20 flex items-center gap-2">
+                    Explore Specializations <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+                <a href="#contact" class="bg-white border border-[#E9ECEF] text-[#495057] hover:text-[#121316] hover:border-[#CED4DA] text-sm font-semibold px-6 py-3.5 rounded-xl transition-all shadow-xs">
+                    Contact Global Desk
+                </a>
+            </div>
+        </div>
 
-        <section class="lg:col-span-8 space-y-6">
-            <div class="bg-white border border-[#E9ECEF] rounded-2xl p-6 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-6">
-                <div>
-                    <div class="flex items-center gap-2">
-                        <span id="active-track-badge" class="text-[10px] font-mono font-bold tracking-wider px-2 py-0.5 bg-[#635BFF]/10 text-[#635BFF] rounded-md uppercase">TRACK</span>
-                        <div class="flex items-center text-xs text-[#6C757D] font-mono">
-                            <i data-lucide="clock" class="w-3 h-3 mr-1"></i> <span id="active-track-total-time">0h</span> total content
-                        </div>
+        <div id="about" class="lg:col-span-5 relative">
+            <div class="absolute inset-0 bg-gradient-to-tr from-[#635BFF]/20 to-transparent rounded-3xl transform rotate-3 scale-105 -z-10 blur-xl"></div>
+            <div class="bg-white border border-[#E9ECEF] p-3 rounded-3xl shadow-xl">
+                <div class="aspect-[4/5] w-full rounded-2xl overflow-hidden bg-[#F1F3F5] relative">
+                    <img src="i.jpg" alt="EduSphere Leadership" class="w-full h-full object-cover object-center">
+                    <div class="absolute bottom-4 left-4 right-4 bg-white/80 premium-blur border border-white/40 rounded-xl p-4 shadow-md">
+                        <p class="text-xs font-mono font-bold text-[#635BFF] uppercase tracking-wider">Corporate Anchor</p>
+                        <h4 class="text-sm font-bold text-[#121316] mt-0.5">Founded & Executed in Atlanta, GA</h4>
+                        <p class="text-[11px] text-[#495057] mt-0.5">Connecting elite knowledge networks nationwide.</p>
                     </div>
-                    <h2 id="active-track-headline" class="text-2xl font-bold tracking-tight text-[#121316] mt-2">Loading Certification...</h2>
-                    <p id="active-track-summary" class="text-sm text-[#495057] mt-1 leading-relaxed max-w-2xl">Loading information details...</p>
-                </div>
-                <div class="flex md:flex-col gap-2 shrink-0">
-                    <button class="bg-[#635BFF] text-white text-xs font-semibold px-4 py-3 rounded-xl hover:bg-[#5249F4] transition-all flex items-center justify-center gap-1.5 shadow-sm">
-                        <i data-lucide="file-text" class="w-3.5 h-3.5"></i> Access Study Guide
-                    </button>
-                    <button onclick="switchGlobalTab('instructor')" class="bg-[#F1F3F5] text-[#495057] text-xs font-semibold px-4 py-3 rounded-xl hover:bg-[#E9ECEF] transition-all flex items-center justify-center gap-1.5">
-                        <i data-lucide="users" class="w-3.5 h-3.5"></i> Request 1-on-1 Mentor
-                    </button>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <div class="bg-white border border-[#E9ECEF] rounded-2xl shadow-sm overflow-hidden">
-                <div class="px-6 py-4 border-b border-[#E9ECEF] flex items-center justify-between bg-[#F8F9FA]">
-                    <h3 class="text-sm font-bold text-[#121316] uppercase tracking-wider">Exam Domain Objectives & Syllabus</h3>
-                </div>
-                <div id="syllabus-modules-wrapper" class="divide-y divide-[#E9ECEF]"></div>
+    <section id="technical" class="bg-white border-y border-[#E9ECEF] py-20">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="max-w-3xl mb-12">
+                <span class="text-xs font-mono font-bold text-[#635BFF] tracking-widest uppercase">Vertical One</span>
+                <h2 class="text-3xl font-bold tracking-tight text-[#121316] mt-1">Enterprise Systems & Security Certifications</h2>
+                <p class="text-sm text-[#495057] mt-2">Comprehensive 1-on-1 tracking labs and baseline mapping for the tech industry's leading credentials.</p>
             </div>
-        </section>
-    </div>
 
-    <div id="view-instructor" class="global-view hidden max-w-4xl mx-auto px-6 py-12">
-        <div class="text-center max-w-2xl mx-auto mb-10">
-            <span class="text-xs font-mono font-bold text-[#635BFF] tracking-widest uppercase">Join Global Faculty</span>
-            <h2 class="text-3xl font-bold tracking-tight text-[#121316] mt-1">Share Expertise. Earn Premium Income.</h2>
-            <p class="text-sm text-[#495057] mt-2">EduSphere vets elite educators, certified trainers, and industry practitioners. Complete your platform application below to initiate automated credential checks.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="border border-[#E9ECEF] rounded-2xl p-6 bg-[#FAFAFC] hover:border-[#635BFF] transition-all group">
+                    <div class="w-10 h-10 rounded-xl bg-[#635BFF]/10 text-[#635BFF] flex items-center justify-center mb-4"><i data-lucide="shield-check" class="w-5 h-5"></i></div>
+                    <h3 class="text-base font-bold text-[#121316] group-hover:text-[#635BFF] transition-colors">ITS Certiport Suite</h3>
+                    <p class="text-xs text-[#495057] mt-2 leading-relaxed">Foundational networks, application defense matrix blueprints, and standard infrastructure operations validation.</p>
+                </div>
+                <div class="border border-[#E9ECEF] rounded-2xl p-6 bg-[#FAFAFC] hover:border-[#635BFF] transition-all group">
+                    <div class="w-10 h-10 rounded-xl bg-[#635BFF]/10 text-[#635BFF] flex items-center justify-center mb-4"><i data-lucide="award" class="w-5 h-5"></i></div>
+                    <h3 class="text-base font-bold text-[#121316] group-hover:text-[#635BFF] transition-colors">CompTIA Security+ / Network+</h3>
+                    <p class="text-xs text-[#495057] mt-2 leading-relaxed">Global administrative baseline standards for network tracking mitigation, zero-day threat analysis, and risk controls.</p>
+                </div>
+                <div class="border border-[#E9ECEF] rounded-2xl p-6 bg-[#FAFAFC] hover:border-[#635BFF] transition-all group">
+                    <div class="w-10 h-10 rounded-xl bg-[#635BFF]/10 text-[#635BFF] flex items-center justify-center mb-4"><i data-lucide="git-branch" class="w-5 h-5"></i></div>
+                    <h3 class="text-base font-bold text-[#121316] group-hover:text-[#635BFF] transition-colors">Cisco CCNA (200-301)</h3>
+                    <p class="text-xs text-[#495057] mt-2 leading-relaxed">Configuring, validating, and troubleshooting enterprise access routing fabrics, switching topologies, and automation APIs.</p>
+                </div>
+                <div class="border border-[#E9ECEF] rounded-2xl p-6 bg-[#FAFAFC] hover:border-[#635BFF] transition-all group">
+                    <div class="w-10 h-10 rounded-xl bg-[#635BFF]/10 text-[#635BFF] flex items-center justify-center mb-4"><i data-lucide="server" class="w-5 h-5"></i></div>
+                    <h3 class="text-base font-bold text-[#121316] group-hover:text-[#635BFF] transition-colors">Cisco CCNP Enterprise</h3>
+                    <p class="text-xs text-[#495057] mt-2 leading-relaxed">Advanced engineering metrics for dual-stack architectures, corporate virtual networks, and policy-driven automation execution.</p>
+                </div>
+            </div>
         </div>
-        
-        <div class="bg-white border border-[#E9ECEF] rounded-3xl p-2 shadow-xl overflow-hidden aspect-[3/4] sm:aspect-[4/5] md:aspect-[16/19]">
-            <iframe 
-                src="https://docs.google.com/forms/d/e/1FAIpQLSf6x_gJ79fH0U8XvNqWjSg7v5b4A-Vb-YOUR-FORM-ID/viewform?embedded=true" 
-                class="w-full h-full rounded-2xl border-0"
-                allow="geolocation; camera; microphone">
-                Loading Application Portal...
-            </iframe>
-        </div>
-    </div>
+    </section>
 
-    <div id="view-corporate" class="global-view hidden max-w-4xl mx-auto px-6 py-12">
-        <div class="text-center max-w-2xl mx-auto mb-10">
-            <span class="text-xs font-mono font-bold text-[#635BFF] tracking-widest uppercase">Enterprise Logistics</span>
-            <h2 class="text-3xl font-bold tracking-tight text-[#121316] mt-1">Deploy Elite Up-Skilling Camps</h2>
-            <p class="text-sm text-[#495057] mt-2">Scale engineering competency inside your organization. Submit your workforce compliance or transformation baseline objectives below for custom quotes.</p>
+    <section id="leadership" class="py-20">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="max-w-3xl mb-12">
+                <span class="text-xs font-mono font-bold text-[#635BFF] tracking-widest uppercase">Vertical Two</span>
+                <h2 class="text-3xl font-bold tracking-tight text-[#121316] mt-1">Professional Development & Leadership Suite</h2>
+                <p class="text-sm text-[#495057] mt-2">Cultivating highly effective professional performance, human mechanics optimization, and elite communications management.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white border border-[#E9ECEF] rounded-2xl p-6 shadow-xs flex gap-5 items-start">
+                    <div class="p-3 bg-[#635BFF]/5 text-[#635BFF] rounded-xl shrink-0"><i data-lucide="message-square" class="w-6 h-6"></i></div>
+                    <div>
+                        <h3 class="text-base font-bold text-[#121316]">Effective Communication Management</h3>
+                        <p class="text-xs text-[#495057] mt-1.5 leading-relaxed">Strategies for cross-functional corporate alignments, resolving group conflict, deliverable metrics positioning, and executive-level presentation dynamics.</p>
+                    </div>
+                </div>
+                <div class="bg-white border border-[#E9ECEF] rounded-2xl p-6 shadow-xs flex gap-5 items-start">
+                    <div class="p-3 bg-[#635BFF]/5 text-[#635BFF] rounded-xl shrink-0"><i data-lucide="brain" class="w-6 h-6"></i></div>
+                    <div>
+                        <h3 class="text-base font-bold text-[#121316]">Advanced Personality Assessments</h3>
+                        <p class="text-xs text-[#495057] mt-1.5 leading-relaxed">Mapping workforce temperament, processing leadership strengths, evaluating cognitive behavioral blind spots, and maximizing organizational placements.</p>
+                    </div>
+                </div>
+                <div class="bg-white border border-[#E9ECEF] rounded-2xl p-6 shadow-xs flex gap-5 items-start">
+                    <div class="p-3 bg-[#635BFF]/5 text-[#635BFF] rounded-xl shrink-0"><i data-lucide="trending-up" class="w-6 h-6"></i></div>
+                    <div>
+                        <h3 class="text-base font-bold text-[#121316]">Successful Habits & Execution Blueprints</h3>
+                        <p class="text-xs text-[#495057] mt-1.5 leading-relaxed">Systems-driven approaches to high-output workflow tracking, daily accountability architecture, stress threshold mitigation, and long-term goal indexing.</p>
+                    </div>
+                </div>
+                <div class="bg-white border border-[#E9ECEF] rounded-2xl p-6 shadow-xs flex gap-5 items-start">
+                    <div class="p-3 bg-[#635BFF]/5 text-[#635BFF] rounded-xl shrink-0"><i data-lucide="zap" class="w-6 h-6"></i></div>
+                    <div>
+                        <h3 class="text-base font-bold text-[#121316]">High-Impact Motivation & Peak Performance</h3>
+                        <p class="text-xs text-[#495057] mt-1.5 leading-relaxed">Sustaining cultural momentum, overcoming technical bottlenecks, mental resilience protocols under pressure, and elite vision setting for expanding organizations.</p>
+                    </div>
+                </div>
+            </div>
         </div>
-        
-        <div class="bg-white border border-[#E9ECEF] rounded-3xl p-2 shadow-xl overflow-hidden aspect-[3/4] sm:aspect-[4/5] md:aspect-[16/19]">
-            <iframe 
-                src="https://docs.google.com/forms/d/e/1FAIpQLSf6x_gJ79fH0U8XvNqWjSg7v5b4A-Vb-YOUR-SECOND-FORM-ID/viewform?embedded=true" 
-                class="w-full h-full rounded-2xl border-0">
-                Loading Request Framework...
-            </iframe>
+    </section>
+
+    <section id="contact" class="bg-[#121316] text-white py-20 relative overflow-hidden">
+        <div class="absolute -right-32 -bottom-32 opacity-5 text-white"><i data-lucide="globe" class="w-96 h-96"></i></div>
+        <div class="max-w-4xl mx-auto px-6 text-center space-y-8 relative z-10">
+            <span class="text-xs font-mono font-bold text-[#635BFF] tracking-widest uppercase">Global Gateways</span>
+            <h2 class="text-3xl sm:text-4xl font-bold tracking-tight">Initiate Your Enterprise Training Sprint</h2>
+            <p class="text-sm text-[#ADB5BD] max-w-xl mx-auto leading-relaxed">
+                Connect directly with our administration deployment team in Atlanta, Georgia. Let us assess your optimization requirements and build a custom technical or executive training track.
+            </p>
+            
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-6 max-w-md mx-auto space-y-4">
+                <div class="flex items-center justify-center gap-3 text-sm">
+                    <i data-lucide="mail" class="w-5 h-5 text-[#635BFF]"></i>
+                    <a href="mailto:ukhokhar.ggc@gmail.com" class="font-mono font-medium hover:text-[#635BFF] transition-colors text-white underline decoration-1 decoration-[#635BFF] underline-offset-4">
+                        ukhokhar.ggc@gmail.com
+                    </a>
+                </div>
+                <div class="h-px bg-white/10 w-full"></div>
+                <p class="text-[11px] text-[#8E8E93] font-mono uppercase tracking-wider">Response Window: &lt; 12 Business Hours</p>
+            </div>
         </div>
-    </div>
+    </section>
+
+    <footer class="border-t border-[#E9ECEF] bg-white py-8 px-6 text-center text-xs text-[#6C757D]">
+        <p>&copy; 2026 EduSphere Technologies Group. Initially founded and engineered in Atlanta, GA, USA. All rights reserved.</p>
+    </footer>
 
     <script>
-        const CERT_DATA_ARCHIVE = [
-            {
-                id: 'its-cybersecurity',
-                title: 'ITS Certiport Cybersecurity',
-                category: 'Security',
-                icon: 'shield',
-                totalTime: '15h 45m',
-                description: 'Validates baseline technical capability to secure corporate operating systems, cloud networks, and track access vulnerabilities.',
-                modules: [
-                    { name: 'Core Infrastructure Security Frameworks', duration: '4h 15m', objectives: 'Confidentiality, Integrity, Availability (CIA triad), and multi-factor rules.' },
-                    { name: 'Exploit Auditing & Threat Classification', duration: '5h 30m', objectives: 'Identifying injection flaws, social engineering vulnerabilities, and vectors.' }
-                ]
-            },
-            {
-                id: 'comptia-security',
-                title: 'CompTIA Security+',
-                category: 'Security',
-                icon: 'award',
-                totalTime: '26h 30m',
-                description: 'The premier benchmark global certification validating baseline skills required to monitor risk mitigation and engineering compliance.',
-                modules: [
-                    { name: 'Threat Vector Footprints & Exploitation Tactics', duration: '8h 45m', objectives: 'Advanced persistent threats (APTs), social exploits, and traces.' }
-                ]
-            }
-        ];
-
-        let selectedTrackId = CERT_DATA_ARCHIVE[0].id;
-
-        // Dynamic State Tab Router Switch Engine
-        function switchGlobalTab(targetTab) {
-            // Hide all views completely
-            document.querySelectorAll('.global-view').forEach(view => view.classList.add('hidden'));
-            
-            // Show target view
-            document.getElementById(`view-${targetTab}`).classList.remove('hidden');
-
-            // Reset tab button styles
-            const buttons = {
-                learn: document.getElementById('tab-btn-learn'),
-                instructor: document.getElementById('tab-btn-instructor'),
-                corporate: document.getElementById('tab-btn-corporate')
-            };
-
-            Object.keys(buttons).forEach(key => {
-                if(key === targetTab) {
-                    buttons[key].className = "text-xs font-semibold px-4 py-2 rounded-lg transition-all bg-white text-[#121316] shadow-xs";
-                } else {
-                    buttons[key].className = "text-xs font-semibold px-4 py-2 rounded-lg transition-all text-[#495057] hover:text-[#121316]";
-                }
-            });
-        }
-
-        // Render Sidebar Navigation Nodes
-        function buildTrackNavigation() {
-            const container = document.getElementById('track-list-navigation');
-            if(!container) return;
-            container.innerHTML = '';
-
-            CERT_DATA_ARCHIVE.forEach(track => {
-                const isSelected = track.id === selectedTrackId;
-                const card = document.createElement('button');
-                
-                card.className = `w-full text-left p-5 rounded-xl border transition-all duration-200 flex items-start gap-4 ${
-                    isSelected ? 'bg-white border-[#635BFF] shadow-sm ring-1 ring-[#635BFF]' : 'bg-white border-[#E9ECEF]'
-                }`;
-                card.onclick = () => selectTrack(track.id);
-
-                card.innerHTML = `
-                    <div class="p-2.5 rounded-lg ${isSelected ? 'bg-[#635BFF]/10 text-[#635BFF]' : 'bg-[#F8F9FA] text-[#495057]'}">
-                        <i data-lucide="${track.icon}" class="w-5 h-5"></i>
-                    </div>
-                    <div class="flex-1 min-w-0">
-                        <div class="flex items-center justify-between">
-                            <span class="text-[10px] font-mono font-bold tracking-wider uppercase">${track.category}</span>
-                            <span class="text-[10px] font-mono text-[#6C757D]">${track.totalTime}</span>
-                        </div>
-                        <h3 class="text-sm font-semibold text-[#121316] truncate mt-0.5">${track.title}</h3>
-                    </div>
-                `;
-                container.appendChild(card);
-            });
-            lucide.createIcons();
-        }
-
-        function executeWorkspaceUpdate() {
-            const targetData = CERT_DATA_ARCHIVE.find(t => t.id === selectedTrackId);
-            if (!targetData) return;
-
-            document.getElementById('active-track-badge').innerText = targetData.category;
-            document.getElementById('active-track-total-time').innerText = targetData.totalTime;
-            document.getElementById('active-track-headline').innerText = targetData.title;
-            document.getElementById('active-track-summary').innerText = targetData.description;
-
-            const moduleWrapper = document.getElementById('syllabus-modules-wrapper');
-            moduleWrapper.innerHTML = '';
-
-            targetData.modules.forEach((mod, index) => {
-                const item = document.createElement('div');
-                item.className = "p-5 flex flex-col md:flex-row md:items-start justify-between gap-4";
-                item.innerHTML = `
-                    <div class="flex items-start gap-4">
-                        <div class="w-6 h-6 rounded-md bg-[#EEF0F2] text-[#495057] font-mono text-xs font-bold flex items-center justify-center shrink-0">0${index + 1}</div>
-                        <div>
-                            <h4 class="text-sm font-semibold text-[#121316]">${mod.name}</h4>
-                            <p class="text-xs text-[#6C757D] mt-1">${mod.objectives}</p>
-                        </div>
-                    </div>
-                    <span class="text-xs font-mono text-[#6C757D] bg-[#EEF0F2] px-2 py-0.5 rounded self-start">${mod.duration}</span>
-                `;
-                moduleWrapper.appendChild(item);
-            });
-            lucide.createIcons();
-        }
-
-        function selectTrack(id) {
-            selectedTrackId = id;
-            buildTrackNavigation();
-            executeWorkspaceUpdate();
-        }
-
         document.addEventListener("DOMContentLoaded", () => {
-            buildTrackNavigation();
-            executeWorkspaceUpdate();
+            lucide.createIcons();
         });
     </script>
 </body>
