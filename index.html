@@ -3,203 +3,246 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Job Matcher & Resume Scanner</title>
+    <title>Certification Center | EduSphere</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+        body { font-family: 'Inter', -apple-system, sans-serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+    </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans min-h-screen">
+<body class="min-h-screen bg-[#F5F5F7] text-[#1D1D1F] antialiased">
 
-    <header class="bg-blue-600 text-white shadow-md py-4 px-6">
-        <div class="max-w-6xl mx-auto flex justify-between items-center">
-            <h1 class="text-xl font-bold tracking-tight">🎯 AI Job Matcher Tracker</h1>
-            <span class="text-xs bg-blue-700 px-3 py-1 rounded-full text-blue-100">Powered by Gemini 2.5 Flash</span>
+    <header class="border-b border-[#E5E5EA] bg-white sticky top-0 z-50 px-6 py-4 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+            <div class="w-8 h-8 bg-[#635BFF] rounded-lg flex items-center justify-center text-white font-bold text-sm">E</div>
+            <span class="text-lg font-semibold tracking-tight">EduSphere <span class="text-[#635BFF] text-[10px] font-mono font-medium border border-[#635BFF]/30 px-1.5 py-0.5 rounded ml-1">HQ</span></span>
+        </div>
+        <div class="flex items-center gap-4">
+            <span class="text-xs font-mono text-[#8E8E93] bg-[#E5E5EA] px-2.5 py-1 rounded-full">GitHub Pages Build</span>
+            <button class="bg-[#1D1D1F] text-white text-sm font-medium px-4 py-2 rounded-xl hover:bg-[#635BFF] transition-all transform active:scale-[0.98]">
+                Find an Expert
+            </button>
         </div>
     </header>
 
-    <main class="max-w-4xl mx-auto p-6 my-6">
+    <main class="max-w-7xl mx-auto px-6 py-10 grid grid-cols-1 lg:grid-cols-12 gap-8">
         
-        <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200 mb-6">
-            <h2 class="text-lg font-semibold mb-2 text-gray-900">1. Setup Your Secure Access Key</h2>
-            <p class="text-sm text-gray-500 mb-4">Your key is processed locally inside your browser and is never stored on a server.</p>
-            <div class="flex gap-3">
-                <input type="password" id="apiKey" placeholder="Paste your Gemini API Key here..." 
-                       class="flex-1 border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
-                <button onclick="saveKey()" class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded font-medium transition">
-                    Save Key
+        <aside class="lg:col-span-4 flex flex-col gap-4">
+            <div class="mb-2">
+                <h1 class="text-2xl font-semibold tracking-tight">Certification Center</h1>
+                <p class="text-sm text-[#8E8E93] mt-1">Select an active track to launch your labs and view paths.</p>
+            </div>
+
+            <div id="track-list-container" class="space-y-3">
+                </div>
+
+            <div class="bg-[#1D1D1F] rounded-2xl p-6 text-white mt-4 relative overflow-hidden shadow-xl">
+                <h4 class="text-lg font-medium tracking-tight">Stuck on a concept?</h4>
+                <p class="text-xs text-[#AEAEB2] mt-2 leading-relaxed">
+                    Instantly spin up a 1-on-1 virtual pairing session with verified CCIE/Security architectures active in the pool.
+                </p>
+                <button class="mt-5 w-full bg-[#635BFF] hover:bg-[#5249F4] text-white text-xs font-semibold py-3 rounded-xl transition-all flex items-center justify-center gap-2">
+                    Match with Live Instructor <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
                 </button>
             </div>
-            <p id="keyStatus" class="text-xs mt-2 text-gray-500 italic"></p>
-        </div>
+        </aside>
 
-        <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200 mb-6 grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-                <label class="block text-sm font-semibold mb-2 text-gray-900">2. Paste Your Resume Plain Text</label>
-                <textarea id="resumeText" rows="8" placeholder="Paste your complete resume details here (Skills, Experience, Education)..." 
-                          class="w-full border border-gray-300 p-2 rounded text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
-            </div>
-            <div>
-                <label class="block text-sm font-semibold mb-2 text-gray-900">3. Target Job Location Preference</label>
-                <input type="text" id="locationInput" placeholder="e.g., Atlanta, GA or Remote" 
-                       class="w-full border border-gray-300 p-2 rounded text-sm mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                
-                <button onclick="runJobScanner()" id="scanBtn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded transition shadow-sm mt-4">
-                    🔍 Scan Job Postings & Match Resume
-                </button>
-            </div>
-        </div>
-
-        <div id="loadingState" class="hidden text-center py-12">
-            <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-            <p class="text-gray-600 font-medium">Gemini AI is currently pulling data and running match metrics...</p>
-        </div>
-
-        <div id="resultsDashboard" class="hidden space-y-6">
+        <section class="lg:col-span-8 space-y-6">
             
-            <div class="bg-amber-50 border-l-4 border-amber-500 p-5 rounded-r shadow-sm">
-                <h3 class="font-bold text-amber-900 mb-1 flex items-center gap-2">💡 Today's High-Match Market Analysis</h3>
-                <div id="marketSummary" class="text-sm text-amber-800 space-y-1 whitespace-pre-line"></div>
+            <div class="bg-white border border-[#E5E5EA] rounded-3xl overflow-hidden shadow-sm">
+                <div class="p-4 bg-[#1D1D1F] flex items-center justify-between border-b border-[#2C2C2E]">
+                    <div class="flex items-center gap-2 text-white">
+                        <i data-lucide="video" class="w-4 h-4 text-[#00D4B2]"></i>
+                        <span class="text-xs font-mono font-medium tracking-wide">Video Playlist Module Core</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-[#00D4B2] animate-pulse"></span>
+                        <span class="text-[10px] font-mono text-[#AEAEB2] uppercase">Sync On</span>
+                    </div>
+                </div>
+
+                <div class="relative aspect-video bg-black">
+                    <iframe
+                        id="video-player-frame"
+                        class="absolute top-0 left-0 w-full h-full object-cover"
+                        src=""
+                        title="Course Training Modules"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                    ></iframe>
+                </div>
+
+                <div class="p-6">
+                    <div class="flex flex-wrap items-center justify-between gap-4">
+                        <div>
+                            <h2 id="active-track-title" class="text-xl font-semibold tracking-tight">Loading Title...</h2>
+                            <p id="active-track-desc" class="text-sm text-[#48484A] mt-1">Loading course profile summary description...</p>
+                        </div>
+                        <div class="flex gap-2">
+                            <button class="px-4 py-2 bg-[#F5F5F7] text-xs font-medium rounded-xl hover:bg-[#E5E5EA] text-[#1D1D1F] transition-colors flex items-center gap-1.5">
+                                <i data-lucide="book-open" class="w-3.5 h-3.5"></i> Objectives
+                            </button>
+                            <button class="px-4 py-2 bg-[#635BFF]/10 text-xs font-medium rounded-xl hover:bg-[#635BFF]/20 text-[#635BFF] transition-colors flex items-center gap-1.5">
+                                <i data-lucide="help-circle" class="w-3.5 h-3.5"></i> Take Practice Exam
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
-                <div class="p-4 bg-gray-100 border-b border-gray-200">
-                    <h3 class="font-bold text-gray-900">Matches Meeting the ≥80% Fit Threshold</h3>
-                </div>
-                <div class="overflow-x-auto">
-                    <table class="w-full text-left border-collapse">
-                        <thead>
-                            <tr class="bg-gray-50 text-xs font-semibold text-gray-600 border-b border-gray-200 uppercase">
-                                <th class="p-4">Match %</th>
-                                <th class="p-4">Target Position</th>
-                                <th class="p-4">Identified Skill Gaps</th>
-                                <th class="p-4">Instant Resume Tweak Tip</th>
-                            </tr>
-                        </thead>
-                        <tbody id="jobTableBody" class="text-sm divide-y divide-gray-100">
-                            </tbody>
-                    </table>
-                </div>
+            <div class="bg-white border border-[#E5E5EA] rounded-3xl p-6 shadow-sm">
+                <h3 class="text-base font-semibold mb-4 tracking-tight">Structured Course Syllabus</h3>
+                <div id="syllabus-modules-container" class="divide-y divide-[#F5F5F7]">
+                    </div>
             </div>
 
-        </div>
+        </section>
     </main>
 
     <script>
-        // Check for an existing saved key on initial page startup
-        document.addEventListener('DOMContentLoaded', () => {
-            const storedKey = localStorage.getItem('gemini_api_key');
-            if (storedKey) {
-                document.getElementById('apiKey').value = storedKey;
-                document.getElementById('keyStatus').innerText = "✅ Secure key recovered from local memory storage.";
+        // Structured Architecture Certification Datastore
+        const CERT_TRACKS = [
+            {
+                id: 'its-cybersecurity',
+                title: 'ITS Certiport Cybersecurity',
+                category: 'Security',
+                icon: 'shield',
+                playlistId: 'PL7X6D8_Dsc3hF-K-t9rA8L6h_K_5f4fE7', // Replace with your playlist ID string
+                description: 'Master foundational security principles, network defense strategies, and digital forensics basics.',
+                modules: [
+                    { name: 'Security Principles & Access Control Fundamentals', duration: '4h 15m' },
+                    { name: 'Network Security Architecture & Risk Identification', duration: '5h 30m' },
+                    { name: 'Operating System & Native Application Security Operations', duration: '6h 00m' }
+                ]
+            },
+            {
+                id: 'comptia-security',
+                title: 'CompTIA Security+',
+                category: 'Security',
+                icon: 'award',
+                playlistId: 'PLG49S3NXzAnl4Q_GWcAsS-yGMD8B9kSsz', // Replace with your playlist ID string
+                description: 'The global standard for validating baseline security skills required for core cybersecurity functions.',
+                modules: [
+                    { name: 'Threats, System Attacks, & Hidden Vulnerabilities', duration: '8h 45m' },
+                    { name: 'Architecture Protocols and Corporate Infrastructure Design', duration: '10h 15m' },
+                    { name: 'Operations Mitigation Processes and Incident Response Protocols', duration: '7h 30m' }
+                ]
+            },
+            {
+                id: 'cisco-ccna',
+                title: 'Cisco CCNA (200-301)',
+                category: 'Networking',
+                icon: 'network',
+                playlistId: 'PLxoXkhbW-ys_pLgP8aWSl_BpxD7SNoFk5', // Replace with your playlist ID string
+                description: 'Architect, configure, and troubleshoot corporate networks using routing and switching fabrics.',
+                modules: [
+                    { name: 'Network Architecture Fundamentals & Advanced IP Connectivity', duration: '12h 20m' },
+                    { name: 'IP Topology Services & Orchestrated Automation Frameworks', duration: '9h 15m' },
+                    { name: 'Security Infrastructure Foundations & VPN Architectures', duration: '6h 45m' }
+                ]
+            },
+            {
+                id: 'cisco-ccnp',
+                title: 'Cisco CCNP Enterprise',
+                category: 'Networking',
+                icon: 'server',
+                playlistId: 'PLxoXkhbW-ys9yR48mK1S4I-C1Cof9b4Uu', // Replace with your playlist ID string
+                description: 'Advanced dual-stack scaling, core routing structures, and automation logic for enterprise fabrics.',
+                modules: [
+                    { name: 'Dual-Stack (IPv4/IPv6) Corporate Enterprise Systems Architecture', duration: '14h 10m' },
+                    { name: 'Advanced Core Infrastructure Routing (OSPF, EIGRP, Global BGP Engine)', duration: '18h 35m' },
+                    { name: 'Cisco Overlay SD-WAN Foundations & Enterprise Network Programming', duration: '11h 20m' }
+                ]
             }
+        ];
+
+        // Global Orchestration Platform State
+        let selectedTrackId = CERT_TRACKS[0].id;
+
+        // Render Navigation Interface Core
+        function renderTrackButtons() {
+            const container = document.getElementById('track-list-container');
+            container.innerHTML = ''; // Fresh DOM Reset
+
+            CERT_TRACKS.forEach(track => {
+                const isSelected = track.id === selectedTrackId;
+                
+                const button = document.createElement('button');
+                button.className = `w-full text-left p-5 rounded-2xl border transition-all duration-300 flex items-start gap-4 ${
+                    isSelected
+                        ? 'bg-white border-[#635BFF] shadow-md ring-1 ring-[#635BFF]'
+                        : 'bg-white border-[#E5E5EA] hover:border-[#8E8E93] hover:shadow-sm'
+                }`;
+                
+                button.onclick = () => selectTrack(track.id);
+
+                button.innerHTML = `
+                    <div class="p-3 rounded-xl ${isSelected ? 'bg-[#635BFF]/10 text-[#635BFF]' : 'bg-[#F5F5F7] text-[#48484A]'}">
+                        <i data-lucide="${track.icon}" class="w-5 h-5"></i>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <span class="text-[11px] font-mono font-semibold tracking-wider ${isSelected ? 'text-[#635BFF]' : 'text-[#8E8E93]'} uppercase">
+                            ${track.category}
+                        </span>
+                        <h3 class="text-base font-medium text-[#1D1D1F] truncate mt-0.5">${track.title}</h3>
+                        <p class="text-xs text-[#8E8E93] line-clamp-2 mt-1">${track.description}</p>
+                    </div>
+                `;
+                container.appendChild(button);
+            });
+            lucide.createIcons(); // Force refresh vector icons
+        }
+
+        // Render Active Sandbox Workspace Detail Elements
+        function updateActiveWorkspace() {
+            const activeData = CERT_TRACKS.find(t => t.id === selectedTrackId);
+            if (!activeData) return;
+
+            // Mount Media Embed URLs
+            document.getElementById('video-player-frame').src = `https://www.youtube.com/embed/videoseries?list=${activeData.playlistId}`;
+            document.getElementById('active-track-title').innerText = activeData.title;
+            document.getElementById('active-track-desc').innerText = activeData.description;
+
+            // Render Course Syllabus Steps
+            const moduleContainer = document.getElementById('syllabus-modules-container');
+            moduleContainer.innerHTML = '';
+
+            activeData.modules.forEach((mod, index) => {
+                const item = document.createElement('div');
+                item.className = "py-4 flex items-center justify-between group hover:bg-[#F5F5F7]/50 px-2 rounded-xl transition-all";
+                item.innerHTML = `
+                    <div class="flex items-center gap-3 min-w-0">
+                        <div class="w-6 h-6 rounded-full border-2 border-[#E5E5EA] group-hover:border-[#635BFF] flex items-center justify-center text-[10px] font-mono text-[#8E8E93] group-hover:text-[#635BFF] font-semibold transition-all">
+                            ${index + 1}
+                        </div>
+                        <p class="text-sm font-medium text-[#48484A] group-hover:text-[#1D1D1F] transition-colors truncate">
+                            ${mod.name}
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-4 ml-4 shrink-0">
+                        <span class="text-xs font-mono text-[#8E8E93]">${mod.duration}</span>
+                        <i data-lucide="check-circle" class="w-4 h-4 text-[#8E8E93]/30 group-hover:text-[#00D4B2] transition-colors"></i>
+                    </div>
+                `;
+                moduleContainer.appendChild(item);
+            });
+            lucide.createIcons(); // Force lifecycle icon updates
+        }
+
+        // State Machine Controller Update Trigger
+        function selectTrack(id) {
+            selectedTrackId = id;
+            renderTrackButtons();
+            updateActiveWorkspace();
+        }
+
+        // Initialize App Lifecycle Engine Context State
+        document.addEventListener("DOMContentLoaded", () => {
+            renderTrackButtons();
+            updateActiveWorkspace();
         });
-
-        function saveKey() {
-            const key = document.getElementById('apiKey').value.trim();
-            if(key) {
-                localStorage.setItem('gemini_api_key', key);
-                document.getElementById('keyStatus').innerText = "✅ Key stored successfully inside your browser window.";
-                alert("Key verified and stored locally!");
-            }
-        }
-
-        async function runJobScanner() {
-            const key = localStorage.getItem('gemini_api_key') || document.getElementById('apiKey').value.trim();
-            const resume = document.getElementById('resumeText').value.trim();
-            const location = document.getElementById('locationInput').value.trim();
-
-            if(!key) { alert("Please input and save a valid Gemini API key first."); return; }
-            if(!resume) { alert("Please paste text metadata from your resume file."); return; }
-            if(!location) { alert("Please provide a search city, state, or remote status filter."); return; }
-
-            // Show loading dashboard framework
-            document.getElementById('loadingState').classList.remove('hidden');
-            document.getElementById('resultsDashboard').classList.add('hidden');
-
-            // Generating Mock Job Postings targeted to user context since external HTTP fetching requires dedicated API keys
-            const simulatedMarketRawData = `
-                Job 1: Senior IT Solutions Analyst in ${location}. Needs expertise in project architecture, vendor oversight, framework audits, cloud integrations, and strong presentation skills.
-                Job 2: Customer Success Technology Associate in ${location}. Focuses on helpdesk escalations, basic query languages, onboarding documentation, user workflow setups, and ticketing tooling.
-                Job 3: General Infrastructure Systems Coordinator in ${location}. Mandates system uptime configurations, network structural topology monitoring, patch update maintenance, and technical training production.
-            `;
-
-            // Prompt engineering tailored to output structured data directly into our front-end interface
-            const systemEvaluationPrompt = `
-                You are an advanced talent acquisition parsing engine. Read the provided Candidate Resume and the Live Market Postings.
-                
-                Candidate Resume:
-                """${resume}"""
-
-                Available Market Data for Location [${location}]:
-                """${simulatedMarketRawData}"""
-
-                Your Task: Evaluate matches. Return a raw valid JSON object. Do not include any markdown backticks (\`\`\`) or the word "json". Output ONLY valid JSON structure exactly matching this schema blueprint:
-                {
-                   "summary": "Provide a brief 2-sentence summary tracking macro trends for this specific user profile in this city location.",
-                   "matches": [
-                      {
-                         "score": 92,
-                         "title": "Exact Title of Match 1",
-                         "gaps": "List tools or methodologies missing from the resume text relative to this role.",
-                         "tip": "Provide a single highly tactical bullet tip advising how they can rewrite or frame an operational detail on their resume to win this interview."
-                      }
-                   ]
-                }
-                Filter constraint: Only return rows inside the "matches" list where the evaluated score is 80 or above. If a mock job fails the match metric, omit it from the array list.
-            `;
-
-            try {
-                // Connect to the official modern Google Gemini Web API endpoint
-                const targetUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${key}`;
-                
-                const apiResponse = await fetch(targetUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        contents: [{ parts: [{ text: systemEvaluationPrompt }] }]
-                    })
-                });
-
-                const structuralData = await apiResponse.json();
-                let cleanTextOutput = structuralData.candidates[0].content.parts[0].text.trim();
-                
-                // Sanitize output strings from JSON wrapper enclosures if generated by model variants
-                if(cleanTextOutput.startsWith("```")) {
-                    cleanTextOutput = cleanTextOutput.replace(/^```json|```$/g, "").trim();
-                }
-
-                const payload = JSON.parse(cleanTextOutput);
-
-                // Dynamically build and paint the results dashboard interface elements
-                document.getElementById('marketSummary').innerText = payload.summary;
-                
-                const tableBody = document.getElementById('jobTableBody');
-                tableBody.innerHTML = ""; // Wipe table clean
-
-                if(!payload.matches || payload.matches.length === 0) {
-                    tableBody.innerHTML = `<tr><td colspan="4" class="p-8 text-center text-gray-500 font-medium">No postings analyzed met the target ≥80% compatibility threshold today. Try expanding your resume skill lists or location scope.</td></tr>`;
-                } else {
-                    payload.matches.forEach(item => {
-                        const row = document.createElement('tr');
-                        row.className = "hover:bg-gray-50 transition";
-                        row.innerHTML = `
-                            <td class="p-4 font-bold text-emerald-600">${item.score}%</td>
-                            <td class="p-4 font-semibold text-gray-900">${item.title}</td>
-                            <td class="p-4 text-xs text-red-600 max-w-xs font-mono bg-red-50/50">${item.gaps || 'None'}</td>
-                            <td class="p-4 text-xs text-gray-600 italic border-l-2 border-blue-400 bg-blue-50/30">${item.tip}</td>
-                        `;
-                        tableBody.appendChild(row);
-                    });
-                }
-
-                // Smoothly swap loaded frames inside user view
-                document.getElementById('loadingState').classList.add('hidden');
-                document.getElementById('resultsDashboard').classList.remove('hidden');
-
-            } catch (error) {
-                console.error(error);
-                alert("An processing error occurred reading the Gemini model data pipeline. Please check that your key configuration permissions are active and try submitting again.");
-                document.getElementById('loadingState').classList.add('hidden');
-            }
-        }
     </script>
 </body>
 </html>
