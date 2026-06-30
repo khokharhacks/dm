@@ -1,184 +1,803 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EduSphere | Elite Knowledge & Certification Marketplace</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
-        body { font-family: 'Plus Jakarta Sans', -apple-system, sans-serif; letter-spacing: -0.015em; }
-        .font-mono { font-family: 'JetBrains Mono', monospace; }
-        .premium-blur { backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
-        .gradient-text { background: linear-gradient(135deg, #121316 30%, #635BFF 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>[Brand] — Verified Experts. Real Outcomes.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#11142B;
+    --paper:#F7F7F5;
+    --indigo:#4338CA;
+    --indigo-deep:#2F2A8C;
+    --amber:#F5A623;
+    --slate:#62657A;
+    --line:#E4E3DD;
+    --card:#FFFFFF;
+    --radius:14px;
+    --display:'Space Grotesk', sans-serif;
+    --body:'Inter', sans-serif;
+    --mono:'JetBrains Mono', monospace;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--body);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 32px;}
+  ::selection{background:var(--amber); color:var(--ink);}
+
+  /* focus visibility */
+  a:focus-visible, button:focus-visible{outline:2px solid var(--indigo); outline-offset:3px; border-radius:4px;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important;}
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(247,247,245,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav.wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height:76px;
+  }
+  .logo{
+    font-family:var(--display); font-weight:700; font-size:1.3rem;
+    letter-spacing:-0.02em;
+    display:flex; align-items:center; gap:8px;
+  }
+  .logo-mark{
+    width:28px; height:28px; border-radius:7px;
+    background:linear-gradient(135deg, var(--indigo), var(--indigo-deep));
+    display:inline-block; position:relative; flex-shrink:0;
+  }
+  .logo-mark::after{
+    content:"✓"; position:absolute; inset:0;
+    color:var(--amber); font-size:14px; font-weight:700;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .nav-links{
+    display:flex; gap:34px; font-size:0.92rem; font-weight:500; color:var(--ink);
+  }
+  .nav-links a{opacity:0.78; transition:opacity .15s;}
+  .nav-links a:hover{opacity:1;}
+  .nav-cta{display:flex; align-items:center; gap:14px;}
+  @media (max-width:920px){ .nav-links{display:none;} }
+
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    font-family:var(--body); font-weight:600; font-size:0.92rem;
+    padding:11px 22px; border-radius:999px; cursor:pointer; border:none;
+    transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+    white-space:nowrap;
+  }
+  .btn-primary{ background:var(--ink); color:var(--paper); }
+  .btn-primary:hover{ transform:translateY(-1px); box-shadow:0 8px 20px rgba(17,20,43,0.25); }
+  .btn-ghost{ background:transparent; color:var(--ink); border:1.5px solid var(--line); }
+  .btn-ghost:hover{ border-color:var(--ink); }
+  .btn-amber{ background:var(--amber); color:var(--ink); }
+  .btn-amber:hover{ transform:translateY(-1px); box-shadow:0 8px 20px rgba(245,166,35,0.4); }
+  .btn-sm{ padding:8px 16px; font-size:0.82rem; }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:96px 0 64px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid; grid-template-columns:1.05fr 0.95fr; gap:56px; align-items:center;
+  }
+  @media (max-width:980px){ .hero-grid{grid-template-columns:1fr;} }
+
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:var(--mono); font-size:0.74rem; letter-spacing:0.06em; text-transform:uppercase;
+    color:var(--indigo); background:#ECEAFB; padding:7px 13px; border-radius:999px;
+    margin-bottom:22px; font-weight:500;
+  }
+  .eyebrow .dot{width:6px; height:6px; border-radius:50%; background:var(--indigo);}
+
+  h1{
+    font-family:var(--display); font-weight:700; letter-spacing:-0.03em;
+    font-size:clamp(2.6rem, 4.6vw, 4.1rem); line-height:1.04;
+  }
+  h1 .accent{ color:var(--indigo); }
+  h1 .accent2{ color:var(--amber); -webkit-text-stroke:0; }
+
+  .hero p.sub{
+    margin-top:24px; font-size:1.13rem; color:var(--slate); max-width:520px; line-height:1.6;
+  }
+  .hero-actions{ display:flex; flex-wrap:wrap; gap:14px; margin-top:34px; }
+
+  .hero-stats{
+    display:flex; gap:36px; margin-top:52px; flex-wrap:wrap;
+  }
+  .hstat strong{
+    font-family:var(--display); font-size:1.7rem; display:block; letter-spacing:-0.02em;
+  }
+  .hstat span{ font-size:0.82rem; color:var(--slate); }
+
+  /* Finder card — the booking-flow style hero device */
+  .finder{
+    background:var(--card); border:1px solid var(--line); border-radius:20px;
+    padding:28px; box-shadow:0 30px 60px -25px rgba(17,20,43,0.25);
+    position:relative;
+  }
+  .finder-top{ display:flex; justify-content:space-between; align-items:center; margin-bottom:18px;}
+  .finder-top .label{ font-family:var(--mono); font-size:0.72rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--slate);}
+  .finder-status{ font-family:var(--mono); font-size:0.7rem; color:#1A8A52; display:flex; align-items:center; gap:6px;}
+  .finder-status::before{ content:""; width:7px; height:7px; border-radius:50%; background:#1A8A52; box-shadow:0 0 0 3px rgba(26,138,82,0.18);}
+
+  .finder-field{
+    border:1.5px solid var(--line); border-radius:12px; padding:13px 16px; margin-bottom:10px;
+    display:flex; flex-direction:column; gap:2px; transition:border-color .15s;
+  }
+  .finder-field:hover{ border-color:#C7C5BC; }
+  .finder-field .ff-label{ font-size:0.7rem; color:var(--slate); font-weight:500;}
+  .finder-field .ff-value{ font-size:0.96rem; font-weight:600; }
+  .finder-row{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+
+  .finder-results{ margin-top:18px; border-top:1px dashed var(--line); padding-top:18px;}
+  .fr-title{ font-size:0.74rem; color:var(--slate); margin-bottom:12px; font-weight:500;}
+  .expert-row{
+    display:flex; align-items:center; gap:12px; padding:10px; border-radius:10px;
+    transition:background .15s;
+  }
+  .expert-row:hover{ background:#F7F6F2; }
+  .avatar{
+    width:42px; height:42px; border-radius:50%; flex-shrink:0;
+    background:linear-gradient(135deg, var(--indigo), #7C73E8);
+    display:flex; align-items:center; justify-content:center;
+    color:#fff; font-family:var(--display); font-weight:600; font-size:0.85rem;
+  }
+  .er-meta{ flex:1; min-width:0; }
+  .er-meta .name{ font-weight:600; font-size:0.88rem; display:flex; align-items:center; gap:6px;}
+  .er-meta .role{ font-size:0.76rem; color:var(--slate); }
+  .verified-tick{
+    width:14px; height:14px; border-radius:50%; background:var(--amber);
+    display:inline-flex; align-items:center; justify-content:center; font-size:9px; color:var(--ink); flex-shrink:0;
+  }
+  .er-rate{ font-family:var(--mono); font-size:0.82rem; font-weight:500; color:var(--ink); text-align:right; flex-shrink:0;}
+
+  /* ---------- TRUST BAR ---------- */
+  .trustbar{ padding:30px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+  .trustbar .wrap{
+    display:flex; align-items:center; gap:40px; flex-wrap:wrap; justify-content:space-between;
+  }
+  .trustbar .tb-label{ font-family:var(--mono); font-size:0.72rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--slate); flex-shrink:0;}
+  .tb-logos{ display:flex; gap:34px; flex-wrap:wrap; align-items:center; }
+  .tb-logos span{
+    font-family:var(--display); font-weight:600; font-size:0.95rem; color:var(--slate); opacity:0.7;
+  }
+
+  /* ---------- SECTION SHARED ---------- */
+  section{ padding:104px 0; }
+  .section-head{ max-width:620px; margin-bottom:56px; }
+  .section-head .eyebrow{ margin-bottom:18px; }
+  h2{
+    font-family:var(--display); font-weight:700; letter-spacing:-0.025em;
+    font-size:clamp(1.9rem, 3vw, 2.6rem); line-height:1.12;
+  }
+  .section-head p{ margin-top:16px; color:var(--slate); font-size:1.04rem; line-height:1.6; }
+
+  /* ---------- HOW IT WORKS (real process => numbered) ---------- */
+  .steps{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:16px; overflow:hidden; }
+  @media (max-width:860px){ .steps{ grid-template-columns:1fr; } }
+  .step{ background:var(--card); padding:38px 32px; position:relative; }
+  .step .num{ font-family:var(--mono); font-size:0.78rem; color:var(--indigo); margin-bottom:18px; display:block;}
+  .step h3{ font-family:var(--display); font-size:1.2rem; margin-bottom:10px; letter-spacing:-0.01em;}
+  .step p{ color:var(--slate); font-size:0.93rem; line-height:1.55; }
+
+  /* ---------- MARKETPLACE / EXPERT CARDS (credential ticket style) ---------- */
+  .marketplace-toolbar{ display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:40px; flex-wrap:wrap; gap:20px; }
+  .filter-pills{ display:flex; gap:10px; flex-wrap:wrap; }
+  .pill{ font-size:0.82rem; font-weight:500; padding:8px 16px; border-radius:999px; border:1.5px solid var(--line); color:var(--slate); }
+  .pill.active{ background:var(--ink); color:var(--paper); border-color:var(--ink); }
+
+  .card-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+  @media (max-width:980px){ .card-grid{ grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:660px){ .card-grid{ grid-template-columns:1fr;} }
+
+  .ticket{
+    background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+    overflow:hidden; position:relative; transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .ticket:hover{ transform:translateY(-4px); box-shadow:0 22px 40px -22px rgba(17,20,43,0.3); }
+  .ticket-top{ padding:22px 22px 18px; display:flex; gap:14px; align-items:flex-start; }
+  .ticket-avatar{
+    width:52px; height:52px; border-radius:13px; flex-shrink:0;
+    background:linear-gradient(135deg, var(--indigo-deep), var(--indigo));
+    display:flex; align-items:center; justify-content:center; color:#fff;
+    font-family:var(--display); font-weight:700; font-size:1.1rem;
+  }
+  .ticket-id{ font-family:var(--mono); font-size:0.68rem; color:var(--slate); opacity:0.7; margin-bottom:4px;}
+  .ticket-name{ font-family:var(--display); font-weight:600; font-size:1.05rem; display:flex; align-items:center; gap:6px;}
+  .ticket-role{ font-size:0.82rem; color:var(--slate); margin-top:2px;}
+  .ticket-perf{ border-top:1px dashed var(--line); position:relative; padding:16px 22px; display:flex; justify-content:space-between; align-items:center;}
+  .ticket-perf::before, .ticket-perf::after{
+    content:""; position:absolute; top:-9px; width:18px; height:18px; border-radius:50%;
+    background:var(--paper); border:1px solid var(--line);
+  }
+  .ticket-perf::before{ left:-9px; }
+  .ticket-perf::after{ right:-9px; }
+  .ticket-rate{ font-family:var(--mono); font-weight:600; font-size:0.95rem;}
+  .ticket-rate span{ font-weight:400; color:var(--slate); font-size:0.78rem;}
+  .ticket-rating{ font-size:0.83rem; font-weight:500; display:flex; align-items:center; gap:5px;}
+  .ticket-tags{ padding:0 22px 20px; display:flex; gap:8px; flex-wrap:wrap; }
+  .tag{ font-size:0.72rem; background:#F2F1EC; color:var(--ink); padding:5px 10px; border-radius:7px; font-weight:500;}
+
+  /* ---------- SERVICES ---------- */
+  .service-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:18px; }
+  @media (max-width:980px){ .service-grid{ grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:560px){ .service-grid{ grid-template-columns:1fr;} }
+  .service-card{
+    background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+    padding:26px; transition:border-color .2s, transform .2s;
+  }
+  .service-card:hover{ border-color:var(--indigo); transform:translateY(-3px); }
+  .service-icon{
+    width:38px; height:38px; border-radius:10px; background:#ECEAFB;
+    display:flex; align-items:center; justify-content:center; margin-bottom:18px;
+    font-size:1.05rem;
+  }
+  .service-card h3{ font-family:var(--display); font-size:1.02rem; margin-bottom:8px; letter-spacing:-0.01em;}
+  .service-card p{ font-size:0.86rem; color:var(--slate); line-height:1.5; }
+
+  /* ---------- SERVICE TABS ---------- */
+  .tabbar{ display:flex; gap:8px; flex-wrap:wrap; border-bottom:1px solid var(--line); margin-bottom:40px; }
+  .tabbtn{
+    font-family:var(--body); font-weight:600; font-size:0.92rem; color:var(--slate);
+    background:none; border:none; padding:14px 6px; cursor:pointer; position:relative;
+    display:flex; align-items:center; gap:8px; margin-right:22px;
+  }
+  .tabbtn .ticon{ font-size:1rem; }
+  .tabbtn::after{
+    content:""; position:absolute; left:0; right:0; bottom:-1px; height:2px;
+    background:transparent; transition:background .2s;
+  }
+  .tabbtn.active{ color:var(--ink); }
+  .tabbtn.active::after{ background:var(--ink); }
+  .tabpanel{ display:none; }
+  .tabpanel.active{ display:block; animation:fadeIn .35s ease; }
+  @keyframes fadeIn{ from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:translateY(0);} }
+  .tab-intro{ display:flex; justify-content:space-between; align-items:flex-end; gap:24px; margin-bottom:30px; flex-wrap:wrap; }
+  .tab-intro p{ color:var(--slate); font-size:0.96rem; max-width:480px; }
+
+  /* ---------- CERTIFICATION CENTER ---------- */
+  .cert-band{ background:var(--ink); color:var(--paper); }
+  .cert-band .section-head p{ color:#B7B6C8; }
+  .cert-band .eyebrow{ background:rgba(245,166,35,0.16); color:var(--amber); }
+  .cert-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+  @media (max-width:920px){ .cert-grid{ grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:620px){ .cert-grid{ grid-template-columns:1fr;} }
+  .cert-card{
+    background:#1B1E3A; border:1px solid #2C2F52; border-radius:var(--radius);
+    padding:24px; transition:border-color .2s;
+  }
+  .cert-card:hover{ border-color:var(--amber); }
+  .cert-card .cc-top{ display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;}
+  .cert-card .cc-code{ font-family:var(--mono); font-size:0.7rem; color:#8E8FB5; }
+  .cert-card .cc-badge{ font-size:0.68rem; background:rgba(245,166,35,0.15); color:var(--amber); padding:4px 9px; border-radius:6px; font-weight:600;}
+  .cert-card h3{ font-family:var(--display); font-size:1.12rem; margin-bottom:10px; }
+  .cert-card p{ font-size:0.85rem; color:#9C9CBA; line-height:1.55; margin-bottom:18px;}
+  .cc-progress{ height:5px; border-radius:99px; background:#2C2F52; overflow:hidden; margin-bottom:8px;}
+  .cc-progress > div{ height:100%; background:linear-gradient(90deg, var(--amber), #FFD27D); }
+  .cc-meta{ display:flex; justify-content:space-between; font-size:0.72rem; color:#7C7DA0; font-family:var(--mono);}
+
+  /* ---------- CORPORATE ---------- */
+  .corp{ display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center; }
+  @media (max-width:920px){ .corp{ grid-template-columns:1fr; } }
+  .corp-list{ list-style:none; margin-top:28px; display:flex; flex-direction:column; gap:14px;}
+  .corp-list li{ display:flex; gap:12px; align-items:flex-start; font-size:0.95rem; color:var(--ink);}
+  .corp-list li::before{ content:"→"; color:var(--indigo); font-weight:700; flex-shrink:0; }
+  .corp-visual{
+    background:var(--card); border:1px solid var(--line); border-radius:18px; padding:28px;
+    box-shadow:0 30px 60px -30px rgba(17,20,43,0.25);
+  }
+  .corp-row{ display:flex; justify-content:space-between; align-items:center; padding:14px 0; border-bottom:1px solid var(--line);}
+  .corp-row:last-child{ border-bottom:none; }
+  .corp-row .cr-label{ font-size:0.9rem; font-weight:500;}
+  .corp-row .cr-sub{ font-size:0.76rem; color:var(--slate);}
+  .corp-row .cr-tag{ font-family:var(--mono); font-size:0.74rem; background:#ECEAFB; color:var(--indigo); padding:5px 10px; border-radius:7px; font-weight:500;}
+
+  /* ---------- INSTRUCTOR CTA ---------- */
+  .instructor{ background:linear-gradient(135deg, var(--indigo-deep), var(--indigo)); color:#fff; border-radius:24px; }
+  .instructor .wrap{ padding:0; }
+  .instructor-inner{ padding:76px 56px; display:grid; grid-template-columns:1.2fr 0.8fr; gap:40px; align-items:center; }
+  @media (max-width:920px){ .instructor-inner{ grid-template-columns:1fr; padding:56px 32px;} }
+  .instructor h2{ color:#fff; }
+  .instructor p{ color:#D7D5F5; margin-top:16px; font-size:1.02rem; max-width:480px; }
+  .instructor-stats{ display:flex; gap:30px; margin-top:30px; flex-wrap:wrap; }
+  .instructor-stats div strong{ font-family:var(--display); font-size:1.7rem; display:block; }
+  .instructor-stats div span{ font-size:0.78rem; color:#C7C5F0; }
+  .instructor-actions{ display:flex; gap:14px; margin-top:34px; flex-wrap:wrap;}
+  .instructor .btn-ghost{ border-color:rgba(255,255,255,0.35); color:#fff; }
+  .instructor .btn-ghost:hover{ border-color:#fff; }
+
+  /* ---------- TESTIMONIAL STRIP ---------- */
+  .quote-strip{ border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+  .quote-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); }
+  @media (max-width:860px){ .quote-grid{ grid-template-columns:1fr; } }
+  .quote{ background:var(--paper); padding:40px 36px; }
+  .quote p{ font-size:1rem; line-height:1.6; }
+  .quote .qa{ margin-top:20px; display:flex; align-items:center; gap:10px; }
+  .quote .qa .avatar{ width:34px; height:34px; font-size:0.7rem; }
+  .quote .qa-name{ font-size:0.86rem; font-weight:600; }
+  .quote .qa-role{ font-size:0.76rem; color:var(--slate); }
+
+  /* ---------- FINAL CTA ---------- */
+  .final-cta{ text-align:center; padding:120px 0; }
+  .final-cta h2{ font-size:clamp(2.2rem, 4.4vw, 3.4rem); max-width:740px; margin:0 auto; }
+  .final-cta .btn-row{ display:flex; gap:16px; justify-content:center; margin-top:36px; flex-wrap:wrap;}
+
+  /* ---------- FOOTER ---------- */
+  footer{ background:var(--ink); color:#A9A8C4; padding:64px 0 32px; }
+  .foot-grid{ display:grid; grid-template-columns:1.4fr repeat(4,1fr); gap:36px; padding-bottom:48px; border-bottom:1px solid #2C2F52;}
+  @media (max-width:780px){ .foot-grid{ grid-template-columns:1fr 1fr; } }
+  .foot-grid h4{ color:#fff; font-size:0.82rem; margin-bottom:16px; font-weight:600; }
+  .foot-grid ul{ list-style:none; display:flex; flex-direction:column; gap:10px; }
+  .foot-grid a{ font-size:0.86rem; opacity:0.85; transition:opacity .15s; }
+  .foot-grid a:hover{ opacity:1; color:#fff;}
+  .foot-logo{ font-family:var(--display); font-weight:700; font-size:1.2rem; color:#fff; margin-bottom:14px;}
+  .foot-bottom{ display:flex; justify-content:space-between; padding-top:28px; font-size:0.78rem; flex-wrap:wrap; gap:12px;}
+
+  .reveal{ opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease; }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+</style>
 </head>
-<body class="min-h-screen bg-[#FAFAFC] text-[#121316] antialiased scroll-smooth">
+<body>
 
-    <header class="border-b border-[#E9ECEF] bg-white/80 premium-blur sticky top-0 z-50 px-6 lg:px-12 py-4 flex items-center justify-between">
-        <div class="flex items-center gap-4">
-            <div class="w-9 h-9 bg-[#635BFF] rounded-xl flex items-center justify-center text-white font-bold text-base shadow-sm shadow-[#635BFF]/30">E</div>
-            <div class="flex items-center gap-2">
-                <span class="text-base font-bold tracking-tight text-[#121316]">EduSphere</span>
-                <span class="bg-[#121316]/5 text-[#121316] text-[10px] font-mono font-bold px-2 py-0.5 rounded-md border border-[#121316]/10">HQ</span>
-            </div>
+<header>
+  <nav class="wrap">
+    <div class="logo"><span class="logo-mark"></span>[Brand]</div>
+    <div class="nav-links">
+      <a href="#marketplace">Find an Expert</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#corporate">Corporate</a>
+      <a href="#instructor">Become an Instructor</a>
+    </div>
+    <div class="nav-cta">
+      <a href="#" class="btn btn-ghost btn-sm">Log in</a>
+      <a href="#marketplace" class="btn btn-primary btn-sm">Find an Expert</a>
+    </div>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow"><span class="dot"></span>Every expert background-checked &amp; verified</div>
+      <h1>Learn, secure, and <span class="accent">protect</span> —<br>with <span class="accent2">real experts</span>.</h1>
+      <p class="sub">One marketplace for tutors and certified instructors, cybersecurity &amp; penetration testing consultants, and licensed physical security teams — book in minutes, not weeks.</p>
+      <div class="hero-actions">
+        <a href="#marketplace" class="btn btn-primary">Find an Expert</a>
+        <a href="#certifications" class="btn btn-ghost">Browse Certifications</a>
+        <a href="#instructor" class="btn btn-ghost">Become an Instructor</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hstat"><strong>14,200+</strong><span>Verified experts</span></div>
+        <div class="hstat"><strong>96%</strong><span>Session satisfaction</span></div>
+        <div class="hstat"><strong>340+</strong><span>Subjects &amp; certifications</span></div>
+      </div>
+    </div>
+
+    <div class="finder reveal">
+      <div class="finder-top">
+        <span class="label">Find an expert</span>
+        <span class="finder-status">Live availability</span>
+      </div>
+      <div class="finder-field">
+        <span class="ff-label">Subject or certification</span>
+        <span class="ff-value">CompTIA Security+</span>
+      </div>
+      <div class="finder-row">
+        <div class="finder-field">
+          <span class="ff-label">Format</span>
+          <span class="ff-value">Virtual</span>
         </div>
-        
-        <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-[#495057]">
-            <a href="#about" class="hover:text-[#121316] transition-colors">About</a>
-            <a href="#technical" class="hover:text-[#121316] transition-colors">Technical Tracks</a>
-            <a href="#leadership" class="hover:text-[#121316] transition-colors">Professional Development</a>
-            <a href="#contact" class="hover:text-[#121316] transition-colors">Contact</a>
-        </nav>
-
-        <div class="flex items-center gap-4">
-            <a href="#contact" class="bg-[#121316] text-white text-xs font-semibold px-4 py-2.5 rounded-xl hover:bg-[#635BFF] transition-all transform active:scale-[0.98] shadow-sm">
-                Request Consultation
-            </a>
+        <div class="finder-field">
+          <span class="ff-label">This week</span>
+          <span class="ff-value">Any time</span>
         </div>
-    </header>
-
-    <section class="max-w-7xl mx-auto px-6 lg:px-8 pt-16 pb-20 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-        <div class="lg:col-span-7 space-y-6">
-            <div class="inline-flex items-center gap-2 bg-[#635BFF]/10 border border-[#635BFF]/20 px-3 py-1 rounded-full text-[11px] font-mono font-semibold tracking-wider text-[#635BFF] uppercase">
-                <span class="w-1.5 h-1.5 rounded-full bg-[#00D4B2] animate-pulse"></span> Expanding North American Access
-            </div>
-            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#121316] leading-[1.1]">
-                Learn Faster.<br>Connect with Experts.<br><span class="gradient-text">Build Your Future.</span>
-            </h1>
-            <p class="text-base sm:text-lg text-[#495057] leading-relaxed max-w-2xl">
-                One global ecosystem connecting students, schools, and corporate institutions with vetted educators, subject matter experts, and professional coaches. From high-tier technical architecture certifications to executive leadership metrics.
-            </p>
-            <div class="pt-4 flex flex-wrap gap-4">
-                <a href="#technical" class="bg-[#635BFF] hover:bg-[#5249F4] text-white text-sm font-semibold px-6 py-3.5 rounded-xl transition-all shadow-md shadow-[#635BFF]/20 flex items-center gap-2">
-                    Explore Specializations <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                </a>
-                <a href="#contact" class="bg-white border border-[#E9ECEF] text-[#495057] hover:text-[#121316] hover:border-[#CED4DA] text-sm font-semibold px-6 py-3.5 rounded-xl transition-all shadow-xs">
-                    Contact Global Desk
-                </a>
-            </div>
+      </div>
+      <div class="finder-results">
+        <div class="fr-title">3 experts match · sorted by rating</div>
+        <div class="expert-row">
+          <div class="avatar">JR</div>
+          <div class="er-meta"><div class="name">Jordan Reyes <span class="verified-tick">✓</span></div><div class="role">Security+ &amp; Network+ instructor</div></div>
+          <div class="er-rate">$58<span>/hr</span></div>
         </div>
-
-        <div id="about" class="lg:col-span-5 relative">
-            <div class="absolute inset-0 bg-gradient-to-tr from-[#635BFF]/20 to-transparent rounded-3xl transform rotate-3 scale-105 -z-10 blur-xl"></div>
-            <div class="bg-white border border-[#E9ECEF] p-3 rounded-3xl shadow-xl">
-                <div class="aspect-[4/5] w-full rounded-2xl overflow-hidden bg-[#F1F3F5] relative">
-                    <img src="i.jpg" alt="EduSphere Leadership" class="w-full h-full object-cover object-center">
-                    <div class="absolute bottom-4 left-4 right-4 bg-white/80 premium-blur border border-white/40 rounded-xl p-4 shadow-md">
-                        <p class="text-xs font-mono font-bold text-[#635BFF] uppercase tracking-wider">Corporate Anchor</p>
-                        <h4 class="text-sm font-bold text-[#121316] mt-0.5">Founded & Executed in Atlanta, GA</h4>
-                        <p class="text-[11px] text-[#495057] mt-0.5">Connecting elite knowledge networks nationwide.</p>
-                    </div>
-                </div>
-            </div>
+        <div class="expert-row">
+          <div class="avatar">AK</div>
+          <div class="er-meta"><div class="name">Anita Kapoor <span class="verified-tick">✓</span></div><div class="role">Cybersecurity consultant, 9 yrs</div></div>
+          <div class="er-rate">$72<span>/hr</span></div>
         </div>
-    </section>
-
-    <section id="technical" class="bg-white border-y border-[#E9ECEF] py-20">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="max-w-3xl mb-12">
-                <span class="text-xs font-mono font-bold text-[#635BFF] tracking-widest uppercase">Vertical One</span>
-                <h2 class="text-3xl font-bold tracking-tight text-[#121316] mt-1">Enterprise Systems & Security Certifications</h2>
-                <p class="text-sm text-[#495057] mt-2">Comprehensive 1-on-1 tracking labs and baseline mapping for the tech industry's leading credentials.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="border border-[#E9ECEF] rounded-2xl p-6 bg-[#FAFAFC] hover:border-[#635BFF] transition-all group">
-                    <div class="w-10 h-10 rounded-xl bg-[#635BFF]/10 text-[#635BFF] flex items-center justify-center mb-4"><i data-lucide="shield-check" class="w-5 h-5"></i></div>
-                    <h3 class="text-base font-bold text-[#121316] group-hover:text-[#635BFF] transition-colors">ITS Certiport Suite</h3>
-                    <p class="text-xs text-[#495057] mt-2 leading-relaxed">Foundational networks, application defense matrix blueprints, and standard infrastructure operations validation.</p>
-                </div>
-                <div class="border border-[#E9ECEF] rounded-2xl p-6 bg-[#FAFAFC] hover:border-[#635BFF] transition-all group">
-                    <div class="w-10 h-10 rounded-xl bg-[#635BFF]/10 text-[#635BFF] flex items-center justify-center mb-4"><i data-lucide="award" class="w-5 h-5"></i></div>
-                    <h3 class="text-base font-bold text-[#121316] group-hover:text-[#635BFF] transition-colors">CompTIA Security+ / Network+</h3>
-                    <p class="text-xs text-[#495057] mt-2 leading-relaxed">Global administrative baseline standards for network tracking mitigation, zero-day threat analysis, and risk controls.</p>
-                </div>
-                <div class="border border-[#E9ECEF] rounded-2xl p-6 bg-[#FAFAFC] hover:border-[#635BFF] transition-all group">
-                    <div class="w-10 h-10 rounded-xl bg-[#635BFF]/10 text-[#635BFF] flex items-center justify-center mb-4"><i data-lucide="git-branch" class="w-5 h-5"></i></div>
-                    <h3 class="text-base font-bold text-[#121316] group-hover:text-[#635BFF] transition-colors">Cisco CCNA (200-301)</h3>
-                    <p class="text-xs text-[#495057] mt-2 leading-relaxed">Configuring, validating, and troubleshooting enterprise access routing fabrics, switching topologies, and automation APIs.</p>
-                </div>
-                <div class="border border-[#E9ECEF] rounded-2xl p-6 bg-[#FAFAFC] hover:border-[#635BFF] transition-all group">
-                    <div class="w-10 h-10 rounded-xl bg-[#635BFF]/10 text-[#635BFF] flex items-center justify-center mb-4"><i data-lucide="server" class="w-5 h-5"></i></div>
-                    <h3 class="text-base font-bold text-[#121316] group-hover:text-[#635BFF] transition-colors">Cisco CCNP Enterprise</h3>
-                    <p class="text-xs text-[#495057] mt-2 leading-relaxed">Advanced engineering metrics for dual-stack architectures, corporate virtual networks, and policy-driven automation execution.</p>
-                </div>
-            </div>
+        <div class="expert-row">
+          <div class="avatar">DM</div>
+          <div class="er-meta"><div class="name">David Mensah <span class="verified-tick">✓</span></div><div class="role">SOC analyst &amp; trainer</div></div>
+          <div class="er-rate">$49<span>/hr</span></div>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <section id="leadership" class="py-20">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="max-w-3xl mb-12">
-                <span class="text-xs font-mono font-bold text-[#635BFF] tracking-widest uppercase">Vertical Two</span>
-                <h2 class="text-3xl font-bold tracking-tight text-[#121316] mt-1">Professional Development & Leadership Suite</h2>
-                <p class="text-sm text-[#495057] mt-2">Cultivating highly effective professional performance, human mechanics optimization, and elite communications management.</p>
-            </div>
+<div class="trustbar">
+  <div class="wrap">
+    <span class="tb-label">Certification paths hosted</span>
+    <div class="tb-logos">
+      <span>CompTIA</span><span>Cisco CCNA</span><span>AWS</span><span>Microsoft Azure</span><span>Google Cloud</span><span>ITS Certiport</span>
+    </div>
+  </div>
+</div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bg-white border border-[#E9ECEF] rounded-2xl p-6 shadow-xs flex gap-5 items-start">
-                    <div class="p-3 bg-[#635BFF]/5 text-[#635BFF] rounded-xl shrink-0"><i data-lucide="message-square" class="w-6 h-6"></i></div>
-                    <div>
-                        <h3 class="text-base font-bold text-[#121316]">Effective Communication Management</h3>
-                        <p class="text-xs text-[#495057] mt-1.5 leading-relaxed">Strategies for cross-functional corporate alignments, resolving group conflict, deliverable metrics positioning, and executive-level presentation dynamics.</p>
-                    </div>
-                </div>
-                <div class="bg-white border border-[#E9ECEF] rounded-2xl p-6 shadow-xs flex gap-5 items-start">
-                    <div class="p-3 bg-[#635BFF]/5 text-[#635BFF] rounded-xl shrink-0"><i data-lucide="brain" class="w-6 h-6"></i></div>
-                    <div>
-                        <h3 class="text-base font-bold text-[#121316]">Advanced Personality Assessments</h3>
-                        <p class="text-xs text-[#495057] mt-1.5 leading-relaxed">Mapping workforce temperament, processing leadership strengths, evaluating cognitive behavioral blind spots, and maximizing organizational placements.</p>
-                    </div>
-                </div>
-                <div class="bg-white border border-[#E9ECEF] rounded-2xl p-6 shadow-xs flex gap-5 items-start">
-                    <div class="p-3 bg-[#635BFF]/5 text-[#635BFF] rounded-xl shrink-0"><i data-lucide="trending-up" class="w-6 h-6"></i></div>
-                    <div>
-                        <h3 class="text-base font-bold text-[#121316]">Successful Habits & Execution Blueprints</h3>
-                        <p class="text-xs text-[#495057] mt-1.5 leading-relaxed">Systems-driven approaches to high-output workflow tracking, daily accountability architecture, stress threshold mitigation, and long-term goal indexing.</p>
-                    </div>
-                </div>
-                <div class="bg-white border border-[#E9ECEF] rounded-2xl p-6 shadow-xs flex gap-5 items-start">
-                    <div class="p-3 bg-[#635BFF]/5 text-[#635BFF] rounded-xl shrink-0"><i data-lucide="zap" class="w-6 h-6"></i></div>
-                    <div>
-                        <h3 class="text-base font-bold text-[#121316]">High-Impact Motivation & Peak Performance</h3>
-                        <p class="text-xs text-[#495057] mt-1.5 leading-relaxed">Sustaining cultural momentum, overcoming technical bottlenecks, mental resilience protocols under pressure, and elite vision setting for expanding organizations.</p>
-                    </div>
-                </div>
-            </div>
+<section id="how">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow"><span class="dot"></span>How it works</div>
+      <h2>From search to session, in three steps</h2>
+      <p>No back-and-forth emails, no guessing on quality. Every step is built to get you in front of the right expert, fast.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <span class="num">01 / Search</span>
+        <h3>Tell us what you need</h3>
+        <p>Filter by subject, certification, language, price, and availability — compare real profiles, not listings.</p>
+      </div>
+      <div class="step">
+        <span class="num">02 / Book</span>
+        <h3>Book instantly</h3>
+        <p>See live calendars and confirm a session in under a minute. Virtual or in-person, your choice.</p>
+      </div>
+      <div class="step">
+        <span class="num">03 / Learn</span>
+        <h3>Track real progress</h3>
+        <p>Session notes, certification progress, and reviews all live in one dashboard you actually use.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="marketplace">
+  <div class="wrap">
+    <div class="marketplace-toolbar">
+      <div class="section-head" style="margin-bottom:0;">
+        <div class="eyebrow"><span class="dot"></span>The marketplace</div>
+        <h2>Compare experts, side by side</h2>
+      </div>
+      <div class="filter-pills">
+        <span class="pill active">All</span>
+        <span class="pill">Tutoring</span>
+        <span class="pill">Certifications</span>
+        <span class="pill">Career Coaching</span>
+        <span class="pill">Consulting</span>
+      </div>
+    </div>
+
+    <div class="card-grid">
+      <div class="ticket">
+        <div class="ticket-top">
+          <div class="ticket-avatar">JR</div>
+          <div>
+            <div class="ticket-id">EXPERT · #48213</div>
+            <div class="ticket-name">Jordan Reyes <span class="verified-tick">✓</span></div>
+            <div class="ticket-role">Network Security &amp; Security+ Instructor</div>
+          </div>
         </div>
-    </section>
-
-    <section id="contact" class="bg-[#121316] text-white py-20 relative overflow-hidden">
-        <div class="absolute -right-32 -bottom-32 opacity-5 text-white"><i data-lucide="globe" class="w-96 h-96"></i></div>
-        <div class="max-w-4xl mx-auto px-6 text-center space-y-8 relative z-10">
-            <span class="text-xs font-mono font-bold text-[#635BFF] tracking-widest uppercase">Global Gateways</span>
-            <h2 class="text-3xl sm:text-4xl font-bold tracking-tight">Initiate Your Enterprise Training Sprint</h2>
-            <p class="text-sm text-[#ADB5BD] max-w-xl mx-auto leading-relaxed">
-                Connect directly with our administration deployment team in Atlanta, Georgia. Let us assess your optimization requirements and build a custom technical or executive training track.
-            </p>
-            
-            <div class="bg-white/5 border border-white/10 rounded-2xl p-6 max-w-md mx-auto space-y-4">
-                <div class="flex items-center justify-center gap-3 text-sm">
-                    <i data-lucide="mail" class="w-5 h-5 text-[#635BFF]"></i>
-                    <a href="mailto:ukhokhar.ggc@gmail.com" class="font-mono font-medium hover:text-[#635BFF] transition-colors text-white underline decoration-1 decoration-[#635BFF] underline-offset-4">
-                        ukhokhar.ggc@gmail.com
-                    </a>
-                </div>
-                <div class="h-px bg-white/10 w-full"></div>
-                <p class="text-[11px] text-[#8E8E93] font-mono uppercase tracking-wider">Response Window: &lt; 12 Business Hours</p>
-            </div>
+        <div class="ticket-tags">
+          <span class="tag">CompTIA Security+</span>
+          <span class="tag">Network+</span>
+          <span class="tag">Virtual</span>
         </div>
-    </section>
+        <div class="ticket-perf">
+          <div class="ticket-rate">$58<span>/hr</span></div>
+          <div class="ticket-rating">★ 4.9 <span style="color:var(--slate); font-weight:400;">(212)</span></div>
+        </div>
+      </div>
 
-    <footer class="border-t border-[#E9ECEF] bg-white py-8 px-6 text-center text-xs text-[#6C757D]">
-        <p>&copy; 2026 EduSphere Technologies Group. Initially founded and engineered in Atlanta, GA, USA. All rights reserved.</p>
-    </footer>
+      <div class="ticket">
+        <div class="ticket-top">
+          <div class="ticket-avatar">AK</div>
+          <div>
+            <div class="ticket-id">EXPERT · #51790</div>
+            <div class="ticket-name">Anita Kapoor <span class="verified-tick">✓</span></div>
+            <div class="ticket-role">Cybersecurity Consultant</div>
+          </div>
+        </div>
+        <div class="ticket-tags">
+          <span class="tag">Cloud Security</span>
+          <span class="tag">Corporate Training</span>
+          <span class="tag">In-Person</span>
+        </div>
+        <div class="ticket-perf">
+          <div class="ticket-rate">$72<span>/hr</span></div>
+          <div class="ticket-rating">★ 5.0 <span style="color:var(--slate); font-weight:400;">(86)</span></div>
+        </div>
+      </div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            lucide.createIcons();
-        });
-    </script>
+      <div class="ticket">
+        <div class="ticket-top">
+          <div class="ticket-avatar">LM</div>
+          <div>
+            <div class="ticket-id">EXPERT · #39042</div>
+            <div class="ticket-name">Lena Marsh <span class="verified-tick">✓</span></div>
+            <div class="ticket-role">Career Coach &amp; Resume Strategist</div>
+          </div>
+        </div>
+        <div class="ticket-tags">
+          <span class="tag">Interview Prep</span>
+          <span class="tag">LinkedIn</span>
+          <span class="tag">Virtual</span>
+        </div>
+        <div class="ticket-perf">
+          <div class="ticket-rate">$45<span>/hr</span></div>
+          <div class="ticket-rating">★ 4.8 <span style="color:var(--slate); font-weight:400;">(301)</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services" style="background:#FBFAF7; border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow"><span class="dot"></span>Services</div>
+      <h2>Three practices. One trusted marketplace.</h2>
+      <p>From a homework session to a red-team engagement to a guard posted on-site — every expert is vetted the same way.</p>
+    </div>
+
+    <div class="tabbar" role="tablist">
+      <button class="tabbtn active" data-tab="edu" role="tab" aria-selected="true"><span class="ticon">🎓</span>Education &amp; Tutoring</button>
+      <button class="tabbtn" data-tab="cyber" role="tab" aria-selected="false"><span class="ticon">🛡️</span>Cybersecurity &amp; Pen Testing</button>
+      <button class="tabbtn" data-tab="phys" role="tab" aria-selected="false"><span class="ticon">🪪</span>Physical Security</button>
+    </div>
+
+    <div class="tabpanel active" id="panel-edu">
+      <div class="tab-intro">
+        <p>Tutors, certified instructors, and career coaches for every stage of school and work.</p>
+        <a href="#marketplace" class="btn btn-ghost btn-sm">Browse education experts</a>
+      </div>
+      <div class="service-grid">
+        <div class="service-card"><div class="service-icon">📘</div><h3>Academic Tutoring</h3><p>One-on-one help across K-12 and college subjects, scheduled around your week.</p></div>
+        <div class="service-card"><div class="service-icon">🎓</div><h3>Certification Prep</h3><p>Structured paths toward CompTIA, Cisco, AWS, Azure, and ITS Certiport exams.</p></div>
+        <div class="service-card"><div class="service-icon">💼</div><h3>Career Coaching</h3><p>Resume reviews, mock interviews, and LinkedIn strategy from industry pros.</p></div>
+        <div class="service-card"><div class="service-icon">🧑‍🏫</div><h3>Corporate Training</h3><p>Half-day to multi-day workshops on leadership, AI, and communication skills.</p></div>
+      </div>
+    </div>
+
+    <div class="tabpanel" id="panel-cyber">
+      <div class="tab-intro">
+        <p>Licensed consultants for offensive security, audits, and SOC build-outs — individuals or full teams.</p>
+        <a href="#marketplace" class="btn btn-ghost btn-sm">Browse cybersecurity experts</a>
+      </div>
+      <div class="service-grid">
+        <div class="service-card"><div class="service-icon">🎯</div><h3>Penetration Testing</h3><p>Network, web app, and social engineering engagements with full reporting and remediation guidance.</p></div>
+        <div class="service-card"><div class="service-icon">🧪</div><h3>Vulnerability Assessments</h3><p>Scoped scans and manual review against OWASP Top 10 and CIS benchmarks.</p></div>
+        <div class="service-card"><div class="service-icon">🧰</div><h3>SOC &amp; Incident Response</h3><p>Stand up monitoring with Wazuh, honeypots, and alerting, or get help during a live incident.</p></div>
+        <div class="service-card"><div class="service-icon">☁️</div><h3>Cloud &amp; AI Security Consulting</h3><p>Architecture reviews for AWS, Azure, and GenAI deployments.</p></div>
+        <div class="service-card"><div class="service-icon">📋</div><h3>Compliance Audits</h3><p>SOC 2, HIPAA, and PCI-DSS readiness reviews from certified auditors.</p></div>
+        <div class="service-card"><div class="service-icon">🕵️</div><h3>Red Team Engagements</h3><p>Full-scope adversary simulation for mature security programs.</p></div>
+      </div>
+    </div>
+
+    <div class="tabpanel" id="panel-phys">
+      <div class="tab-intro">
+        <p>Licensed, insured physical security professionals for events, sites, and executives.</p>
+        <a href="#marketplace" class="btn btn-ghost btn-sm">Browse security professionals</a>
+      </div>
+      <div class="service-grid">
+        <div class="service-card"><div class="service-icon">🔫</div><h3>Armed Security Guards</h3><p>State-licensed armed guards for sites, retail, and high-risk locations.</p></div>
+        <div class="service-card"><div class="service-icon">🚷</div><h3>Unarmed Security Guards</h3><p>Access control, patrols, and front-desk coverage for offices and campuses.</p></div>
+        <div class="service-card"><div class="service-icon">🎪</div><h3>Event Security</h3><p>Crowd management and entry screening for conferences, weddings, and venues.</p></div>
+        <div class="service-card"><div class="service-icon">🚗</div><h3>Executive Protection</h3><p>Close-protection details and secure transport for executives and VIPs.</p></div>
+        <div class="service-card"><div class="service-icon">🏗️</div><h3>Site &amp; Construction Security</h3><p>Overnight and weekend coverage for active job sites and vacant properties.</p></div>
+        <div class="service-card"><div class="service-icon">📹</div><h3>Security Consulting &amp; Audits</h3><p>Physical risk assessments and guard-force staffing plans.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('.tabbtn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      document.querySelectorAll('.tabbtn').forEach(b=>{ b.classList.remove('active'); b.setAttribute('aria-selected','false'); });
+      document.querySelectorAll('.tabpanel').forEach(p=>p.classList.remove('active'));
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected','true');
+      document.getElementById('panel-' + btn.dataset.tab).classList.add('active');
+    });
+  });
+</script>
+
+<section id="certifications" class="cert-band">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow"><span class="dot"></span>Certification Center</div>
+      <h2>Structured paths toward the credentials that matter</h2>
+      <p>Each path bundles videos, hands-on labs, practice exams, and a real instructor — not just a playlist.</p>
+    </div>
+    <div class="cert-grid">
+      <div class="cert-card">
+        <div class="cc-top"><span class="cc-code">ITS-102</span><span class="cc-badge">Popular</span></div>
+        <h3>ITS Network Security</h3>
+        <p>Certiport-aligned path covering secure protocols, SOC fundamentals, and hands-on lab work.</p>
+        <div class="cc-progress"><div style="width:62%;"></div></div>
+        <div class="cc-meta"><span>62% avg. completion</span><span>14 modules</span></div>
+      </div>
+      <div class="cert-card">
+        <div class="cc-top"><span class="cc-code">SY0-701</span><span class="cc-badge">High demand</span></div>
+        <h3>CompTIA Security+</h3>
+        <p>Full exam-objective coverage with timed practice exams and flashcard review.</p>
+        <div class="cc-progress"><div style="width:48%;"></div></div>
+        <div class="cc-meta"><span>48% avg. completion</span><span>18 modules</span></div>
+      </div>
+      <div class="cert-card">
+        <div class="cc-top"><span class="cc-code">CLF-C02</span><span class="cc-badge">New</span></div>
+        <h3>AWS Cloud Practitioner</h3>
+        <p>Foundational AWS path built for career-changers moving into cloud roles.</p>
+        <div class="cc-progress"><div style="width:31%;"></div></div>
+        <div class="cc-meta"><span>31% avg. completion</span><span>11 modules</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="corporate">
+  <div class="wrap corp">
+    <div>
+      <div class="eyebrow"><span class="dot"></span>Corporate Solutions</div>
+      <h2>Bring verified expertise to your whole team</h2>
+      <p style="color:var(--slate); margin-top:16px; font-size:1.02rem;">From a single workshop to an enterprise-wide training contract — book vetted trainers without the procurement headache.</p>
+      <ul class="corp-list">
+        <li>Half-day and full-day workshops on cybersecurity, AI, and leadership</li>
+        <li>Multi-day bootcamps with hands-on labs and assessments</li>
+        <li>Dedicated account support and consolidated invoicing</li>
+        <li>Enterprise subscriptions with usage reporting</li>
+      </ul>
+      <div class="hero-actions" style="margin-top:30px;">
+        <a href="#" class="btn btn-primary">Talk to Corporate Solutions</a>
+      </div>
+    </div>
+    <div class="corp-visual">
+      <div class="corp-row">
+        <div><div class="cr-label">Cybersecurity Awareness</div><div class="cr-sub">Full-day · up to 200 employees</div></div>
+        <div class="cr-tag">Booked weekly</div>
+      </div>
+      <div class="corp-row">
+        <div><div class="cr-label">AI for Business</div><div class="cr-sub">Half-day · executive track</div></div>
+        <div class="cr-tag">High demand</div>
+      </div>
+      <div class="corp-row">
+        <div><div class="cr-label">Cloud Computing Bootcamp</div><div class="cr-sub">3-day · technical teams</div></div>
+        <div class="cr-tag">New cohort</div>
+      </div>
+      <div class="corp-row">
+        <div><div class="cr-label">Leadership Development</div><div class="cr-sub">Ongoing · cohort-based</div></div>
+        <div class="cr-tag">Enterprise</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="instructor">
+  <div class="wrap">
+    <div class="instructor">
+      <div class="instructor-inner">
+        <div>
+          <h2>Teach what you know. Get paid for it.</h2>
+          <p>Set your own rate, your own hours, and your own subjects. We handle discovery, scheduling, and payments — you handle the teaching.</p>
+          <div class="instructor-stats">
+            <div><strong>$1.2k+</strong><span>Avg. monthly earnings</span></div>
+            <div><strong>48hrs</strong><span>Typical approval time</span></div>
+            <div><strong>0%</strong><span>Listing fees</span></div>
+          </div>
+          <div class="instructor-actions">
+            <a href="#" class="btn btn-amber">Apply to Teach</a>
+            <a href="#" class="btn btn-ghost">See Instructor Requirements</a>
+          </div>
+        </div>
+        <div class="finder" style="background:rgba(255,255,255,0.08); border-color:rgba(255,255,255,0.2); backdrop-filter:blur(6px);">
+          <div class="finder-top">
+            <span class="label" style="color:#D7D5F5;">Application status</span>
+          </div>
+          <div class="finder-field" style="border-color:rgba(255,255,255,0.25);">
+            <span class="ff-label" style="color:#C7C5F0;">Identity verification</span>
+            <span class="ff-value" style="color:#fff;">Complete</span>
+          </div>
+          <div class="finder-field" style="border-color:rgba(255,255,255,0.25);">
+            <span class="ff-label" style="color:#C7C5F0;">Background check</span>
+            <span class="ff-value" style="color:#fff;">In progress</span>
+          </div>
+          <div class="finder-field" style="border-color:rgba(255,255,255,0.25);">
+            <span class="ff-label" style="color:#C7C5F0;">Subjects &amp; certifications</span>
+            <span class="ff-value" style="color:#fff;">3 added</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="quote-strip">
+  <div class="quote-grid">
+    <div class="quote">
+      <p>"I went from failing two practice exams to passing Security+ on the first real attempt. My instructor adjusted the plan every week."</p>
+      <div class="qa"><div class="avatar">MT</div><div><div class="qa-name">Maya Torres</div><div class="qa-role">Student, Security+ path</div></div></div>
+    </div>
+    <div class="quote">
+      <p>"We booked a same-week cybersecurity workshop for 80 employees. The vetting process meant we didn't have to do our own background checks."</p>
+      <div class="qa"><div class="avatar">RP</div><div><div class="qa-name">Raj Patel</div><div class="qa-role">L&amp;D Manager</div></div></div>
+    </div>
+    <div class="quote">
+      <p>"I teach four hours a week between classes and it covers my rent. Payments land the day after each session."</p>
+      <div class="qa"><div class="avatar">SO</div><div><div class="qa-name">Sarah Okafor</div><div class="qa-role">Instructor since 2025</div></div></div>
+    </div>
+  </div>
+</div>
+
+<section class="final-cta">
+  <div class="wrap">
+    <div class="eyebrow" style="margin:0 auto 22px; width:fit-content;"><span class="dot"></span>Get started today</div>
+    <h2>Your next expert is one search away</h2>
+    <div class="btn-row">
+      <a href="#marketplace" class="btn btn-primary">Find an Expert</a>
+      <a href="#instructor" class="btn btn-ghost">Become an Instructor</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-logo">[Brand]</div>
+        <p style="font-size:0.86rem; line-height:1.6; max-width:260px;">Making world-class education and professional expertise accessible to everyone, anywhere.</p>
+      </div>
+      <div>
+        <h4>Learn</h4>
+        <ul><li><a href="#marketplace">Find an Expert</a></li><li><a href="#certifications">Certifications</a></li><li><a href="#">Practice Exams</a></li><li><a href="#">Study Guides</a></li></ul>
+      </div>
+      <div>
+        <h4>Teach</h4>
+        <ul><li><a href="#instructor">Become an Instructor</a></li><li><a href="#">Instructor Resources</a></li><li><a href="#">Earnings</a></li></ul>
+      </div>
+      <div>
+        <h4>Business</h4>
+        <ul><li><a href="#corporate">Corporate Training</a></li><li><a href="#">Enterprise Solutions</a></li><li><a href="#">Partnerships</a></li></ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul><li><a href="#">About</a></li><li><a href="#">Careers</a></li><li><a href="#">Contact</a></li><li><a href="#">Trust &amp; Safety</a></li></ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 [Brand]. All rights reserved.</span>
+      <span>Privacy · Terms · Accessibility</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const els = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); } });
+  }, {threshold:0.15});
+  els.forEach(el=>io.observe(el));
+</script>
+
 </body>
 </html>
