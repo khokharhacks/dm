@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>T2 - Technical Tutor | Atlanta Suburbs</title>
-    <meta name="description" content="T2 - Technical Tutor connects students with qualified tutors in Atlanta suburbs. Online or in-person tutoring, plus Coffee & Connect mentoring sessions.">
+    <meta name="description" content="T2 - Technical Tutor: Dr. Umar Khokhar (STEM tutoring online) & Sal Khan (spiritual/financial mentoring & coffee discussions). Serving Atlanta suburbs.">
     <style>
         :root {
             --primary: #1a3c5e;
@@ -19,7 +19,6 @@
             --text-light: #5a5a5a;
             --border: #e0dcd5;
             --success: #3a7d5a;
-            --warning: #f0c040;
             --shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
             --shadow-hover: 0 6px 24px rgba(0, 0, 0, 0.12);
             --radius: 12px;
@@ -47,7 +46,6 @@
             min-height: 100vh;
         }
 
-        /* ── NAVIGATION ── */
         .nav {
             position: sticky;
             top: 0;
@@ -87,7 +85,6 @@
             border-radius: 10px;
             font-weight: 900;
             font-size: 1.1rem;
-            letter-spacing: 0;
         }
         .nav-links {
             display: flex;
@@ -129,7 +126,6 @@
         .nav-links a.nav-coffee:hover {
             background: var(--coffee-light);
         }
-        /* Mobile hamburger */
         .hamburger {
             display: none;
             background: none;
@@ -158,7 +154,6 @@
             transform: rotate(-45deg) translate(6px, -6px);
         }
 
-        /* ── SECTIONS ── */
         .section {
             padding: 50px 20px;
             max-width: 1200px;
@@ -181,7 +176,6 @@
             margin-right: auto;
         }
 
-        /* ── HERO ── */
         .hero {
             text-align: center;
             padding: 60px 20px 50px;
@@ -208,7 +202,6 @@
         }
         .hero h1 .highlight {
             color: var(--accent);
-            position: relative;
         }
         .hero p {
             font-size: 1.15rem;
@@ -272,7 +265,6 @@
             border-radius: 20px;
         }
 
-        /* ── CARDS GRID ── */
         .cards-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -299,17 +291,16 @@
             position: absolute;
             top: 14px;
             right: 14px;
-            background: var(--coffee-light);
-            color: var(--coffee);
             font-size: 0.72rem;
             font-weight: 700;
             padding: 4px 10px;
             border-radius: 14px;
-            letter-spacing: 0.3px;
-        }
-        .card-badge.online {
             background: #e0f0ff;
             color: #1a5a9a;
+        }
+        .card-badge.coffee {
+            background: var(--coffee-light);
+            color: var(--coffee);
         }
         .card-name {
             font-weight: 700;
@@ -348,6 +339,11 @@
             flex-wrap: wrap;
             margin-top: auto;
         }
+        .rate-info {
+            font-size: 0.8rem;
+            color: #555;
+            margin-top: 2px;
+        }
         .no-results {
             text-align: center;
             padding: 40px;
@@ -356,7 +352,6 @@
             grid-column: 1 / -1;
         }
 
-        /* ── FILTER BAR ── */
         .filter-bar {
             display: flex;
             flex-wrap: wrap;
@@ -400,7 +395,6 @@
             gap: 6px;
         }
 
-        /* ── FORM ── */
         .form-card {
             background: #fff;
             border-radius: var(--radius);
@@ -438,7 +432,6 @@
             font-size: 0.9rem;
             font-family: var(--font);
             background: #fafaf8;
-            transition: var(--transition);
             width: 100%;
         }
         .form-group textarea {
@@ -480,26 +473,14 @@
             font-family: var(--font);
         }
         @keyframes toastIn {
-            from {
-                opacity: 0;
-                transform: translateX(-50%) translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(-50%) translateY(0);
-            }
+            from { opacity: 0; transform: translateX(-50%) translateY(30px); }
+            to { opacity: 1; transform: translateX(-50%) translateY(0); }
         }
         @keyframes toastOut {
-            from {
-                opacity: 1;
-            }
-            to {
-                opacity: 0;
-                transform: translateX(-50%) translateY(20px);
-            }
+            from { opacity: 1; }
+            to { opacity: 0; transform: translateX(-50%) translateY(20px); }
         }
 
-        /* ── COFFEE SECTION ── */
         .coffee-highlight {
             background: linear-gradient(135deg, #fdf8f3 0%, #f5ebe0 100%);
             border: 2px dashed var(--coffee);
@@ -520,7 +501,20 @@
             font-size: 0.95rem;
         }
 
-        /* ── FOOTER ── */
+        .google-form-link {
+            text-align: center;
+            margin: 20px auto 0;
+            padding: 16px;
+            background: #f3f9ff;
+            border-radius: var(--radius);
+            border: 1px dashed var(--primary);
+            max-width: 600px;
+        }
+        .google-form-link p {
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
         .footer {
             text-align: center;
             padding: 30px 20px;
@@ -533,7 +527,6 @@
             color: var(--primary);
         }
 
-        /* ── RESPONSIVE ── */
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -563,9 +556,6 @@
             .hero h1 {
                 font-size: 2rem;
             }
-            .hero p {
-                font-size: 1rem;
-            }
             .form-row {
                 grid-template-columns: 1fr;
             }
@@ -573,29 +563,8 @@
                 flex-direction: column;
                 align-items: stretch;
             }
-            .filter-bar select,
-            .filter-bar input {
-                width: 100%;
-                min-width: auto;
-            }
             .cards-grid {
                 grid-template-columns: 1fr;
-            }
-            .section {
-                padding: 35px 14px;
-            }
-        }
-        @media (max-width: 400px) {
-            .hero h1 {
-                font-size: 1.6rem;
-            }
-            .hero-btns {
-                flex-direction: column;
-                align-items: center;
-            }
-            .btn {
-                width: 100%;
-                max-width: 280px;
             }
         }
     </style>
@@ -622,69 +591,58 @@
         </div>
     </nav>
 
-    <!-- ═══════════ HERO / HOME ═══════════ -->
+    <!-- ═══════════ HERO ═══════════ -->
     <section class="hero" id="home">
-        <div class="hero-badge">📍 Serving Atlanta Suburbs</div>
-        <h1>Find Your Perfect <span class="highlight">Tutor</span> with <strong>T2</strong></h1>
-        <p>Connecting high school & college students with qualified tutors across Atlanta suburbs. Online sessions or in-person meetups — including relaxed coffee shop conversations.</p>
+        <div class="hero-badge">📍 Atlanta Suburbs & Online</div>
+        <h1>Learn with <span class="highlight">Real Experts</span> at <strong>T2</strong></h1>
+        <p>STEM tutoring by Dr. Umar Khokhar (online) and spiritual/financial mentoring by Sal Khan over coffee. Simple, direct, and built for high school & college students.</p>
         <div class="hero-btns">
-            <a href="#find-tutor" class="btn btn-primary">🔍 Find a Tutor</a>
-            <a href="#coffee-connect" class="btn btn-coffee">☕ Coffee & Connect</a>
-            <a href="#become-tutor" class="btn btn-outline">📝 Become a Tutor</a>
+            <a href="#find-tutor" class="btn btn-primary">📘 Book Dr. Umar (STEM)</a>
+            <a href="#coffee-connect" class="btn btn-coffee">☕ Coffee with Sal Khan</a>
+            <a href="#become-tutor" class="btn btn-outline">📝 Join as a Tutor</a>
         </div>
     </section>
 
     <!-- ═══════════ FIND A TUTOR ═══════════ -->
     <section class="section" id="find-tutor">
-        <h2 class="section-title">🔍 Find a Tutor</h2>
-        <p class="section-subtitle">Filter by location, subject, and mode to find your ideal tutor in the Atlanta suburbs.</p>
+        <h2 class="section-title">🔍 Our Tutors</h2>
+        <p class="section-subtitle">Currently two dedicated professionals. Use the filters to see who fits your needs.</p>
 
-        <!-- Filter Bar -->
         <div class="filter-bar" id="filterBar">
             <div class="filter-group">
                 <label for="filterLocation">📍 Location:</label>
                 <select id="filterLocation">
-                    <option value="all">All Atlanta Suburbs</option>
-                    <option value="Alpharetta">Alpharetta</option>
-                    <option value="Marietta">Marietta</option>
-                    <option value="Sandy Springs">Sandy Springs</option>
-                    <option value="Roswell">Roswell</option>
-                    <option value="Decatur">Decatur</option>
-                    <option value="Dunwoody">Dunwoody</option>
-                    <option value="Johns Creek">Johns Creek</option>
-                    <option value="Smyrna">Smyrna</option>
-                    <option value="Kennesaw">Kennesaw</option>
-                    <option value="Brookhaven">Brookhaven</option>
+                    <option value="all">All</option>
+                    <option value="Online">Online (Zoom/Teams)</option>
+                    <option value="Atlanta Area">Atlanta Area (In-Person)</option>
                 </select>
             </div>
             <div class="filter-group">
-                <label for="filterSubject">📚 Subject:</label>
+                <label for="filterSubject">📚 Focus:</label>
                 <select id="filterSubject">
-                    <option value="all">All Subjects</option>
+                    <option value="all">All</option>
                     <option value="Mathematics">Mathematics</option>
-                    <option value="Computer Science">Computer Science</option>
                     <option value="Physics">Physics</option>
-                    <option value="Chemistry">Chemistry</option>
-                    <option value="Biology">Biology</option>
-                    <option value="English & Writing">English & Writing</option>
-                    <option value="Test Prep (SAT/ACT)">Test Prep (SAT/ACT)</option>
                     <option value="Engineering">Engineering</option>
-                    <option value="Study Skills & Mentoring">Study Skills & Mentoring</option>
+                    <option value="Test Prep (SAT/ACT)">Test Prep (SAT/ACT)</option>
+                    <option value="Spiritual Mentoring">Spiritual Mentoring</option>
+                    <option value="Financial Literacy">Financial Literacy</option>
+                    <option value="Career Guidance">Career Guidance</option>
+                    <option value="Emotional Well-being">Emotional Well-being</option>
                 </select>
             </div>
             <div class="filter-group">
                 <label for="filterMode">💻 Mode:</label>
                 <select id="filterMode">
-                    <option value="all">All Modes</option>
+                    <option value="all">All</option>
                     <option value="Online">Online</option>
                     <option value="In-Person">In-Person</option>
-                    <option value="Both">Both Available</option>
                 </select>
             </div>
             <div class="filter-group">
                 <label for="filterCoffee">☕ Coffee Chat:</label>
                 <select id="filterCoffee">
-                    <option value="all">All Tutors</option>
+                    <option value="all">All</option>
                     <option value="yes">Offers Coffee & Connect</option>
                 </select>
             </div>
@@ -692,31 +650,35 @@
             <button class="btn btn-outline btn-sm" onclick="resetFilters()">↺ Reset</button>
         </div>
 
-        <!-- Results -->
-        <div class="cards-grid" id="tutorResults">
-            <!-- Dynamically filled by JS -->
-        </div>
+        <div class="cards-grid" id="tutorResults"></div>
     </section>
 
     <!-- ═══════════ COFFEE & CONNECT ═══════════ -->
     <section class="section" id="coffee-connect">
         <h2 class="section-title">☕ Coffee & Connect</h2>
-        <p class="section-subtitle">Sometimes you need more than just academic help. Meet a mentor at a local coffee shop for an emotional discussion, career advice, or just a supportive conversation.</p>
+        <p class="section-subtitle">A relaxed coffee shop meeting (or online) with Sal Khan — spiritual mentor & financial advisor. Perfect for emotional support, life guidance, or financial clarity.</p>
         <div class="coffee-highlight">
-            <h3>🫂 Talk It Out Over Coffee</h3>
-            <p>Feeling stressed about exams? Unsure about your major? Just need someone who's been there to listen? Our <strong>Coffee & Connect</strong> mentors are here for you — at a cozy coffee shop near you in the Atlanta suburbs.</p>
-            <a href="#find-tutor" class="btn btn-coffee btn-sm" onclick="document.getElementById('filterCoffee').value='yes';filterTutors();window.scrollTo({top:document.getElementById('find-tutor').offsetTop-80,behavior:'smooth'});">☕ Find a Coffee Mentor</a>
+            <h3>💬 Talk with Sal Khan</h3>
+            <p><strong>$50/hour in‑person</strong> at a coffee shop in the Atlanta suburbs, or <strong>$25/hour online</strong>. Reach out directly via LinkedIn to schedule.</p>
+            <a href="https://www.linkedin.com/in/muhammadsalahuddinkhan/" target="_blank" class="btn btn-coffee btn-sm">🔗 Connect on LinkedIn</a>
         </div>
-        <div class="cards-grid" id="coffeeTutors">
-            <!-- Tutors who offer coffee connect shown here -->
-        </div>
+        <div class="cards-grid" id="coffeeTutors"></div>
     </section>
 
     <!-- ═══════════ BECOME A TUTOR ═══════════ -->
     <section class="section" id="become-tutor">
         <h2 class="section-title">📝 Become a Tutor</h2>
-        <p class="section-subtitle">Join the T2 network! Share your knowledge with students across Atlanta suburbs. Upload your resume and unofficial transcript — we'll review and get back to you.</p>
-        <div class="form-card">
+        <p class="section-subtitle">We're building a trusted network in the Atlanta suburbs. Use the quick Google Form or fill out the form below to apply.</p>
+
+        <!-- Google Form link added as requested -->
+        <div class="google-form-link">
+            <p>📋 <strong>Prefer a quick application?</strong></p>
+            <a href="https://forms.gle/rq6qX3GfDGGquvBA9" target="_blank" class="btn btn-primary">📝 Apply via Google Form</a>
+            <p style="font-size:0.8rem; color:#666; margin-top:8px;">You can also use the detailed form below (files stored locally for demo).</p>
+        </div>
+
+        <div class="form-card" style="margin-top: 25px;">
+            <h3 style="text-align:center; margin-bottom:20px;">📄 Detailed Application (Local Demo)</h3>
             <form id="tutorApplicationForm" onsubmit="submitApplication(event)">
                 <div class="form-row">
                     <div class="form-group">
@@ -734,7 +696,7 @@
                         <input type="tel" id="appPhone" placeholder="(404) 555-0123">
                     </div>
                     <div class="form-group">
-                        <label for="appLocation">Your Location (Atlanta Suburb) *</label>
+                        <label for="appLocation">Your Location *</label>
                         <select id="appLocation" required>
                             <option value="">-- Select --</option>
                             <option value="Alpharetta">Alpharetta</option>
@@ -756,14 +718,13 @@
                         <label for="appSubjects">Subjects You Can Teach *</label>
                         <select id="appSubjects" multiple required style="min-height:120px;">
                             <option value="Mathematics">Mathematics</option>
-                            <option value="Computer Science">Computer Science</option>
                             <option value="Physics">Physics</option>
-                            <option value="Chemistry">Chemistry</option>
-                            <option value="Biology">Biology</option>
-                            <option value="English & Writing">English & Writing</option>
-                            <option value="Test Prep (SAT/ACT)">Test Prep (SAT/ACT)</option>
                             <option value="Engineering">Engineering</option>
-                            <option value="Study Skills & Mentoring">Study Skills & Mentoring</option>
+                            <option value="Test Prep (SAT/ACT)">Test Prep (SAT/ACT)</option>
+                            <option value="Spiritual Mentoring">Spiritual Mentoring</option>
+                            <option value="Financial Literacy">Financial Literacy</option>
+                            <option value="Career Guidance">Career Guidance</option>
+                            <option value="Emotional Well-being">Emotional Well-being</option>
                             <option value="Other">Other</option>
                         </select>
                         <span class="file-hint">Hold Ctrl/Cmd to select multiple</span>
@@ -816,13 +777,13 @@
                 <div class="form-row full">
                     <div class="form-group">
                         <label for="appBio">Brief Bio / Why You'd Like to Tutor</label>
-                        <textarea id="appBio" placeholder="Tell us a bit about yourself and your tutoring philosophy..." rows="3"></textarea>
+                        <textarea id="appBio" placeholder="Tell us a bit about yourself..." rows="3"></textarea>
                     </div>
                 </div>
                 <div class="form-submit-row">
                     <button type="submit" class="btn btn-primary">✅ Submit Application</button>
                     <p style="font-size:0.78rem;color:#999;margin-top:8px;">
-                        Your application will be stored securely. We'll review and contact you within 3-5 business days.
+                        We'll review and contact you within 3-5 business days.
                     </p>
                 </div>
             </form>
@@ -832,191 +793,108 @@
     <!-- ═══════════ ABOUT ═══════════ -->
     <section class="section" id="about">
         <h2 class="section-title">ℹ️ About T2</h2>
-        <p class="section-subtitle">Technical Tutor — built for Atlanta suburb students.</p>
         <div style="max-width:650px;margin:0 auto;text-align:center;color:var(--text-light);line-height:1.8;">
-            <p><strong>T2 (Technical Tutor)</strong> was founded to bridge the gap between students seeking quality tutoring and skilled educators in the <strong>Atlanta suburbs</strong>.</p>
-            <p>We serve <strong>high schoolers</strong> and <strong>university/college students</strong> with personalized, one-on-one tutoring — both online and in-person. Our unique <strong>☕ Coffee & Connect</strong> program also offers informal mentoring over coffee for emotional support and career guidance.</p>
-            <p style="margin-top:16px;"><strong>📍 Initially serving:</strong> Alpharetta, Marietta, Sandy Springs, Roswell, Decatur, Dunwoody, Johns Creek, Smyrna, Kennesaw, Brookhaven & surrounding areas.</p>
-            <p style="margin-top:8px;"><strong>📧 Contact:</strong> hello@t2tutor.com &nbsp;|&nbsp; <strong>📞</strong> (404) 555-TUTOR</p>
+            <p><strong>T2 (Technical Tutor)</strong> connects students in the Atlanta suburbs with trustworthy, vetted professionals.</p>
+            <p><strong>Dr. Umar Khokhar</strong> provides expert STEM tutoring online via Zoom/Teams. <strong>Sal Khan</strong> offers spiritual & financial mentoring — either online or over a relaxed coffee.</p>
+            <p>We're just getting started. If you're a qualified tutor, <a href="#become-tutor">apply here</a>.</p>
+            <p style="margin-top:16px;">📧 hello@t2tutor.com &nbsp;|&nbsp; 📞 (404) 555-TUTOR</p>
         </div>
     </section>
 
-    <!-- ═══════════ FOOTER ═══════════ -->
     <footer class="footer">
-        <p>&copy; 2026 <strong>T2 — Technical Tutor</strong>. Proudly serving Atlanta suburbs. All rights reserved.</p>
+        <p>&copy; 2026 <strong>T2 — Technical Tutor</strong>. Serving Atlanta suburbs with care.</p>
     </footer>
 
-    <!-- ═══════════ SCRIPTS ═══════════ -->
     <script>
-        // ── MOBILE NAV TOGGLE ──
-        function toggleMobileMenu() {
-            const navLinks = document.getElementById('navLinks');
-            const hamburger = document.getElementById('hamburger');
-            navLinks.classList.toggle('open');
-            hamburger.classList.toggle('open');
-        }
-
-        function closeMobileMenu() {
-            const navLinks = document.getElementById('navLinks');
-            const hamburger = document.getElementById('hamburger');
-            navLinks.classList.remove('open');
-            hamburger.classList.remove('open');
-        }
-
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', function(e) {
-            const nav = document.getElementById('navbar');
-            if (!nav.contains(e.target)) {
-                closeMobileMenu();
+        // ── REAL TUTOR DATA ──
+        const tutors = [
+            {
+                id: 1,
+                name: 'Dr. Umar Khokhar',
+                subjects: ['Mathematics', 'Physics', 'Engineering', 'Test Prep (SAT/ACT)'],
+                location: 'Online',
+                mode: 'Online',
+                coffeeConnect: false,
+                experience: 15,
+                education: 'PhD (LinkedIn profile)',
+                bio: 'Experienced STEM tutor offering clear, patient online sessions via Zoom or Teams. Book directly through the Google Form.',
+                linkedin: 'https://www.linkedin.com/in/umar-khokhar-ph-d-36953a15/',
+                bookingForm: 'https://forms.gle/sHqwMUGh9dtbhPfx6',
+                rating: 5.0
+            },
+            {
+                id: 2,
+                name: 'Sal Khan',
+                subjects: ['Spiritual Mentoring', 'Financial Literacy', 'Career Guidance', 'Emotional Well-being'],
+                location: 'Atlanta Area',
+                mode: 'Both',
+                coffeeConnect: true,
+                experience: 10,
+                education: 'Spiritual Mentor & Financial Advisor',
+                bio: 'I help students and young professionals navigate life, money, and purpose. Coffee shop meetups ($50/hr) or online sessions ($25/hr).',
+                linkedin: 'https://www.linkedin.com/in/muhammadsalahuddinkhan/',
+                rates: { online: 25, inPerson: 50 },
+                rating: 5.0
             }
+        ];
+
+        function toggleMobileMenu() {
+            document.getElementById('navLinks').classList.toggle('open');
+            document.getElementById('hamburger').classList.toggle('open');
+        }
+        function closeMobileMenu() {
+            document.getElementById('navLinks').classList.remove('open');
+            document.getElementById('hamburger').classList.remove('open');
+        }
+        document.addEventListener('click', function(e) {
+            if (!document.getElementById('navbar').contains(e.target)) closeMobileMenu();
         });
 
-        // ── TUTOR DATABASE ──
-        const tutors = [{
-            id: 1,
-            name: 'Dr. Ananya Patel',
-            subjects: ['Mathematics', 'Physics', 'Test Prep (SAT/ACT)'],
-            location: 'Alpharetta',
-            mode: 'Both',
-            coffeeConnect: true,
-            experience: 8,
-            education: 'PhD in Applied Mathematics',
-            bio: 'Former college professor with 8 years of tutoring experience. I love making complex topics simple and relatable.',
-            rating: 4.9,
-        }, {
-            id: 2,
-            name: 'Marcus Johnson',
-            subjects: ['Computer Science', 'Engineering', 'Mathematics'],
-            location: 'Marietta',
-            mode: 'Both',
-            coffeeConnect: true,
-            experience: 5,
-            education: 'MS in Computer Engineering, Georgia Tech',
-            bio: 'Software engineer by day, passionate tutor by evening. I help students grasp coding, algorithms, and engineering fundamentals.',
-            rating: 4.8,
-        }, {
-            id: 3,
-            name: 'Emily Rodriguez',
-            subjects: ['English & Writing', 'Study Skills & Mentoring', 'Test Prep (SAT/ACT)'],
-            location: 'Decatur',
-            mode: 'In-Person',
-            coffeeConnect: true,
-            experience: 6,
-            education: 'MA in English Literature',
-            bio: 'I specialize in helping students find their voice through writing. Also great at study strategies and test prep.',
-            rating: 4.7,
-        }, {
-            id: 4,
-            name: 'James Kim',
-            subjects: ['Chemistry', 'Biology', 'Physics'],
-            location: 'Sandy Springs',
-            mode: 'Online',
-            coffeeConnect: false,
-            experience: 4,
-            education: 'BS in Biochemistry, Emory University',
-            bio: 'Pre-med graduate with a knack for making science click. Online sessions with digital whiteboard included.',
-            rating: 4.6,
-        }, {
-            id: 5,
-            name: 'Sarah Okafor',
-            subjects: ['Mathematics', 'Computer Science', 'Study Skills & Mentoring'],
-            location: 'Roswell',
-            mode: 'Both',
-            coffeeConnect: true,
-            experience: 7,
-            education: 'BS in Data Science, Georgia State',
-            bio: 'Data analyst who loves helping students conquer math anxiety. Coffee shop sessions are my favorite — learning should be relaxed!',
-            rating: 4.9,
-        }, {
-            id: 6,
-            name: 'David Chen',
-            subjects: ['Engineering', 'Physics', 'Computer Science'],
-            location: 'Johns Creek',
-            mode: 'In-Person',
-            coffeeConnect: false,
-            experience: 10,
-            education: 'MS in Mechanical Engineering, MIT',
-            bio: 'Retired engineer with a passion for mentoring the next generation. Hands-on, practical approach to problem-solving.',
-            rating: 5.0,
-        }, {
-            id: 7,
-            name: 'Lauren Williams',
-            subjects: ['Biology', 'Chemistry', 'Study Skills & Mentoring'],
-            location: 'Kennesaw',
-            mode: 'Both',
-            coffeeConnect: true,
-            experience: 3,
-            education: 'BS in Nursing, Kennesaw State University',
-            bio: 'Registered nurse and current grad student. I understand the pressure students face and offer both academic and emotional support.',
-            rating: 4.5,
-        }, {
-            id: 8,
-            name: 'Ryan Thompson',
-            subjects: ['Test Prep (SAT/ACT)', 'English & Writing', 'Mathematics'],
-            location: 'Brookhaven',
-            mode: 'Online',
-            coffeeConnect: false,
-            experience: 5,
-            education: 'BA in Education, University of Georgia',
-            bio: 'Certified teacher specializing in SAT/ACT prep. My students average a 150+ point improvement.',
-            rating: 4.8,
-        }, ];
-
-        // Load any additional tutors from localStorage (submitted applications that were "approved")
-        function loadStoredTutors() {
-            try {
-                const stored = localStorage.getItem('t2_approved_tutors');
-                if (stored) {
-                    const approved = JSON.parse(stored);
-                    // Merge with existing tutors (avoid duplicates by id)
-                    const existingIds = new Set(tutors.map(t => t.id));
-                    approved.forEach(t => {
-                        if (!existingIds.has(t.id)) {
-                            tutors.push(t);
-                            existingIds.add(t.id);
-                        }
-                    });
-                }
-            } catch (e) {
-                // ignore parse errors
-            }
-        }
-        loadStoredTutors();
-
-        // ── RENDER TUTORS ──
         function renderTutors(tutorArray, containerId) {
             const container = document.getElementById(containerId);
             if (!container) return;
             if (tutorArray.length === 0) {
-                container.innerHTML =
-                    '<div class="no-results">😕 No tutors match your filters. Try broadening your search or <a href="#become-tutor">request a tutor</a>.</div>';
+                container.innerHTML = '<div class="no-results">😕 No tutors match those filters. Try a different combination.</div>';
                 return;
             }
             container.innerHTML = tutorArray.map(t => {
-                const modeBadgeClass = t.mode === 'Online' ? 'online' : '';
-                const modeLabel = t.mode === 'Both' ? 'Online & In-Person' : t.mode;
-                const coffeeBadge = t.coffeeConnect ?
-                    '<span class="card-badge">☕ Coffee & Connect</span>' :
-                    '';
-                const modeBadge = t.mode !== 'Both' ?
-                    `<span class="card-badge ${modeBadgeClass}">💻 ${modeLabel}</span>` :
-                    `<span class="card-badge">💻🏠 ${modeLabel}</span>`;
-                const stars = '⭐'.repeat(Math.floor(t.rating)) + (t.rating % 1 >= 0.5 ? '½' : '');
+                const isOnline = t.mode === 'Online' || t.mode === 'Both';
+                const isInPerson = t.mode === 'In-Person' || t.mode === 'Both';
+                let modeBadge = '';
+                if (t.mode === 'Online') modeBadge = '<span class="card-badge">💻 Online only</span>';
+                else if (t.mode === 'Both') modeBadge = '<span class="card-badge">💻🏠 Online & In-Person</span>';
+                else modeBadge = '<span class="card-badge">🏠 In-Person</span>';
+
+                const coffeeBadge = t.coffeeConnect ? '<span class="card-badge coffee">☕ Coffee & Connect</span>' : '';
+                const stars = '⭐'.repeat(Math.floor(t.rating));
+                let rateHTML = '';
+                if (t.rates) {
+                    rateHTML = `<div class="rate-info">💰 Rates: $${t.rates.online}/hr online & $${t.rates.inPerson}/hr in‑person (coffee)</div>`;
+                }
+                const bookingButtons = [];
+                if (t.bookingForm) {
+                    bookingButtons.push(`<a href="${t.bookingForm}" target="_blank" class="btn btn-primary btn-sm">📅 Book Online (Google Form)</a>`);
+                } else if (t.id === 2) {
+                    bookingButtons.push(`<button class="btn btn-primary btn-sm" onclick="contactTutor('${t.name}', 'online')">💻 Book Online ($25/hr)</button>`);
+                    bookingButtons.push(`<button class="btn btn-coffee btn-sm" onclick="contactTutor('${t.name}', 'inperson')">☕ Coffee Chat ($50/hr)</button>`);
+                }
+                if (t.linkedin && !t.bookingForm) {
+                    bookingButtons.push(`<a href="${t.linkedin}" target="_blank" class="btn btn-outline btn-sm">🔗 LinkedIn</a>`);
+                }
                 return `
                 <div class="card">
-                    ${coffeeBadge}
-                    ${modeBadge}
+                    ${coffeeBadge} ${modeBadge}
                     <div class="card-name">${t.name}</div>
                     <div class="card-subject">📚 ${t.subjects.join(' • ')}</div>
                     <div class="card-location">📍 ${t.location} &nbsp;|&nbsp; ${stars} ${t.rating}</div>
                     <div class="card-bio">${t.bio}</div>
+                    ${rateHTML}
                     <div class="card-meta">
                         <span>🎓 ${t.education}</span>
                         <span>🕒 ${t.experience}+ yrs exp</span>
                     </div>
                     <div class="card-actions">
-                        <button class="btn btn-primary btn-sm" onclick="bookTutor('${t.name}')">📅 Book Session</button>
-                        ${t.coffeeConnect ? `<button class="btn btn-coffee btn-sm" onclick="bookCoffee('${t.name}','${t.location}')">☕ Coffee Chat</button>` : ''}
+                        ${bookingButtons.join(' ')}
                     </div>
                 </div>`;
             }).join('');
@@ -1032,17 +910,14 @@
             if (loc !== 'all') filtered = filtered.filter(t => t.location === loc);
             if (subj !== 'all') filtered = filtered.filter(t => t.subjects.includes(subj));
             if (mode !== 'all') {
-                if (mode === 'Both') filtered = filtered.filter(t => t.mode === 'Both');
-                else filtered = filtered.filter(t => t.mode === mode || t.mode === 'Both');
+                filtered = filtered.filter(t => t.mode === mode || t.mode === 'Both');
             }
             if (coffee === 'yes') filtered = filtered.filter(t => t.coffeeConnect === true);
 
             renderTutors(filtered, 'tutorResults');
-            // Also update coffee section
             const coffeeTutors = tutors.filter(t => t.coffeeConnect === true);
             renderTutors(coffeeTutors, 'coffeeTutors');
-            // Scroll to results
-            document.getElementById('find-tutor').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            document.getElementById('find-tutor').scrollIntoView({ behavior: 'smooth' });
         }
 
         function resetFilters() {
@@ -1051,184 +926,78 @@
             document.getElementById('filterMode').value = 'all';
             document.getElementById('filterCoffee').value = 'all';
             renderTutors(tutors, 'tutorResults');
-            const coffeeTutors = tutors.filter(t => t.coffeeConnect === true);
-            renderTutors(coffeeTutors, 'coffeeTutors');
+            renderTutors(tutors.filter(t => t.coffeeConnect), 'coffeeTutors');
         }
 
-        function bookTutor(name) {
-            showToast(`📅 Booking request sent for ${name}! (Demo: In production, this opens a scheduling calendar.)`);
+        function contactTutor(name, type) {
+            const msg = type === 'online' 
+                ? `💻 To book an online session with ${name}, please reach out via LinkedIn. (Demo: opens LinkedIn profile)`
+                : `☕ To arrange a coffee meeting with ${name} ($50/hr), connect on LinkedIn.`;
+            showToast(msg);
+            if (name === 'Sal Khan') {
+                window.open('https://www.linkedin.com/in/muhammadsalahuddinkhan/', '_blank');
+            }
         }
 
-        function bookCoffee(name, location) {
-            showToast(
-                `☕ Coffee & Connect request sent for ${name} in ${location}! They'll reach out to arrange a coffee shop meetup.`);
-        }
-
-        // ── INITIAL RENDER ──
+        // Initial render
         renderTutors(tutors, 'tutorResults');
-        const coffeeTutorsInit = tutors.filter(t => t.coffeeConnect === true);
-        renderTutors(coffeeTutorsInit, 'coffeeTutors');
+        renderTutors(tutors.filter(t => t.coffeeConnect), 'coffeeTutors');
 
-        // ── FILE PREVIEW ──
         function previewFile(inputId, previewId) {
             const input = document.getElementById(inputId);
             const preview = document.getElementById(previewId);
             if (input.files && input.files[0]) {
-                const file = input.files[0];
-                const sizeMB = (file.size / (1024 * 1024)).toFixed(2);
-                preview.textContent = `✅ Selected: ${file.name} (${sizeMB} MB)`;
+                preview.textContent = `✅ Selected: ${input.files[0].name} (${(input.files[0].size/1024/1024).toFixed(2)} MB)`;
                 preview.style.color = '#3a7d5a';
-            } else {
-                preview.textContent = '';
-            }
+            } else preview.textContent = '';
         }
 
-        // ── FORM SUBMISSION ──
         function submitApplication(event) {
             event.preventDefault();
-
-            const form = document.getElementById('tutorApplicationForm');
-            const resumeFile = document.getElementById('appResume').files[0];
-            const transcriptFile = document.getElementById('appTranscript').files[0];
-
-            // Read files as base64 for localStorage demo
-            const filePromises = [];
-            let resumeData = null;
-            let transcriptData = null;
-
-            if (resumeFile) {
-                filePromises.push(new Promise((resolve) => {
-                    const reader = new FileReader();
-                    reader.onload = () => { resumeData = { name: resumeFile.name, type: resumeFile.type,
-                            data: reader.result }; resolve(); };
-                    reader.onerror = () => resolve();
-                    reader.readAsDataURL(resumeFile);
-                }));
-            }
-            if (transcriptFile) {
-                filePromises.push(new Promise((resolve) => {
-                    const reader = new FileReader();
-                    reader.onload = () => { transcriptData = { name: transcriptFile.name, type: transcriptFile
-                            .type, data: reader.result }; resolve(); };
-                    reader.onerror = () => resolve();
-                    reader.readAsDataURL(transcriptFile);
-                }));
-            }
-
-            Promise.all(filePromises).then(() => {
-                const application = {
-                    id: Date.now(),
-                    name: document.getElementById('appName').value.trim(),
-                    email: document.getElementById('appEmail').value.trim(),
-                    phone: document.getElementById('appPhone').value.trim(),
-                    location: document.getElementById('appLocation').value,
-                    subjects: Array.from(document.getElementById('appSubjects').selectedOptions).map(o => o
-                        .value),
-                    mode: document.getElementById('appMode').value,
-                    coffeeConnect: document.getElementById('appCoffee').value,
-                    experience: document.getElementById('appExperience').value || 0,
-                    education: document.getElementById('appEducation').value,
-                    bio: document.getElementById('appBio').value.trim(),
-                    resume: resumeData,
-                    transcript: transcriptData,
-                    submittedAt: new Date().toISOString(),
-                    status: 'pending',
-                };
-
-                // Store in localStorage
-                try {
-                    const existingApps = JSON.parse(localStorage.getItem('t2_applications') || '[]');
-                    existingApps.push(application);
-                    localStorage.setItem('t2_applications', JSON.stringify(existingApps));
-                } catch (e) {
-                    // If storage full (files too large), store without file data
-                    const appWithoutFiles = { ...application, resume: { name: resumeFile?.name ||
-                                'uploaded' }, transcript: { name: transcriptFile?.name || 'uploaded' } };
-                    const existingApps = JSON.parse(localStorage.getItem('t2_applications') || '[]');
-                    existingApps.push(appWithoutFiles);
-                    localStorage.setItem('t2_applications', JSON.stringify(existingApps));
-                    showToast(
-                        '⚠️ Application saved (files too large for demo storage — in production they would be uploaded to our server).',
-                        5000);
-                    form.reset();
-                    document.getElementById('resumePreview').textContent = '';
-                    document.getElementById('transcriptPreview').textContent = '';
-                    return;
-                }
-
-                showToast(
-                    '✅ Application submitted successfully! We will review and contact you within 3-5 business days.'
-                    );
-                form.reset();
-                document.getElementById('resumePreview').textContent = '';
-                document.getElementById('transcriptPreview').textContent = '';
-
-                // Log for demo purposes
-                console.log('T2 Tutor Application:', {
-                    name: application.name,
-                    email: application.email,
-                    location: application.location,
-                    subjects: application.subjects,
-                    mode: application.mode,
-                    coffeeConnect: application.coffeeConnect,
-                    filesIncluded: !!resumeFile && !!transcriptFile,
-                });
-                console.log('Total applications stored:', JSON.parse(localStorage.getItem('t2_applications') ||
-                    '[]').length);
-            });
+            const app = {
+                id: Date.now(),
+                name: document.getElementById('appName').value,
+                email: document.getElementById('appEmail').value,
+                location: document.getElementById('appLocation').value,
+                subjects: Array.from(document.getElementById('appSubjects').selectedOptions).map(o=>o.value),
+                mode: document.getElementById('appMode').value,
+                coffee: document.getElementById('appCoffee').value,
+                experience: document.getElementById('appExperience').value,
+                education: document.getElementById('appEducation').value,
+                bio: document.getElementById('appBio').value,
+                submitted: new Date().toISOString()
+            };
+            localStorage.setItem('t2_last_application', JSON.stringify(app));
+            showToast('✅ Application received! We will review and contact you soon.');
+            event.target.reset();
+            document.getElementById('resumePreview').textContent = '';
+            document.getElementById('transcriptPreview').textContent = '';
         }
 
-        // ── TOAST NOTIFICATION ──
-        function showToast(message, duration = 3000) {
-            const existing = document.querySelector('.toast');
-            if (existing) existing.remove();
+        function showToast(msg, duration=3000) {
+            const old = document.querySelector('.toast');
+            if (old) old.remove();
             const toast = document.createElement('div');
             toast.className = 'toast';
-            toast.textContent = message;
+            toast.textContent = msg;
             document.body.appendChild(toast);
-            setTimeout(() => {
-                if (toast.parentNode) toast.remove();
-            }, duration);
+            setTimeout(() => toast.remove(), duration);
         }
 
-        // ── ACTIVE NAV LINK HIGHLIGHT ON SCROLL ──
-        const navLinksAll = document.querySelectorAll('.nav-links a');
-        const sections = document.querySelectorAll('section[id]');
-
-        function updateActiveNav() {
-            let currentSection = 'home';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop - 100;
-                if (window.scrollY >= sectionTop) {
-                    currentSection = section.getAttribute('id');
-                }
+        // Active nav highlight
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            let current = 'home';
+            sections.forEach(sec => {
+                if (window.scrollY >= sec.offsetTop - 100) current = sec.id;
             });
-            navLinksAll.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === '#' + currentSection) {
-                    link.classList.add('active');
-                }
+            document.querySelectorAll('.nav-links a').forEach(a => {
+                a.classList.remove('active');
+                if (a.getAttribute('href') === '#' + current) a.classList.add('active');
             });
-        }
-        window.addEventListener('scroll', updateActiveNav, { passive: true });
+        }, { passive: true });
 
-        // ── KEYBOARD NAVIGATION (Accessibility) ──
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeMobileMenu();
-            }
-        });
-
-        // ── INIT ──
-        console.log('🚀 T2 - Technical Tutor is ready!');
-        console.log('📍 Serving Atlanta Suburbs');
-        console.log('👨‍🏫 Pre-loaded tutors:', tutors.length);
-        console.log('☕ Coffee & Connect tutors:', tutors.filter(t => t.coffeeConnect).length);
-        console.log('💾 Applications in localStorage:', JSON.parse(localStorage.getItem('t2_applications') || '[]')
-            .length);
-        console.log('📝 To view stored applications, check localStorage key: t2_applications');
-        console.log('ℹ️  This is a static GitHub Pages demo. File uploads are stored client-side via localStorage.');
-        console.log('🔗 For production, connect the form to Formspree, Getform, or Web3Forms for real file uploads.');
+        console.log('🚀 T2 ready — Dr. Umar Khokhar & Sal Khan.');
     </script>
 </body>
 </html>
